@@ -5,21 +5,107 @@
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
+  function appendStylesheet(href, marker) {
+    if (document.querySelector(`link[${marker}]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute(marker, 'true');
+    document.head.appendChild(link);
+  }
+
   function loadResponsiveLayer() {
-    if (!document.querySelector('link[data-phase-one-responsive]')) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = '/responsive.css?v=phase-1';
-      link.setAttribute('data-phase-one-responsive', 'true');
-      document.head.appendChild(link);
-    }
+    appendStylesheet('/responsive.css?v=phase-1', 'data-phase-one-responsive');
+    appendStylesheet('/phase2.css?v=phase-2-scroll-fix', 'data-phase-two-polish');
 
     if (!document.getElementById('critical-responsive-guard')) {
       const style = document.createElement('style');
       style.id = 'critical-responsive-guard';
-      style.textContent = 'html,body{max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}.preloader{max-width:100vw}.section-shell{max-width:100%}@media(max-width:390px){.hero h1{overflow-wrap:anywhere}.stat-grid{grid-template-columns:1fr}.button{width:100%}}';
+      style.textContent = 'html,body{max-width:100%;overflow-x:hidden;overflow-y:auto;touch-action:pan-y pinch-zoom}.preloader.is-hidden{display:none!important;pointer-events:none!important}*,*::before,*::after{box-sizing:border-box}.section-shell{max-width:100%}@media(max-width:390px){.hero h1{overflow-wrap:anywhere}.stat-grid{grid-template-columns:1fr}.button{width:100%}}';
       document.head.appendChild(style);
     }
+  }
+
+  function setText(selector, value, scope = document) {
+    const node = $(selector, scope);
+    if (node) node.textContent = value;
+  }
+
+  function replaceTextExact(oldText, newText) {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      if (node.nodeValue && node.nodeValue.includes(oldText)) {
+        node.nodeValue = node.nodeValue.replaceAll(oldText, newText);
+      }
+    });
+  }
+
+  function applyPhaseTwoCopy() {
+    document.body.classList.add('phase-two-live');
+    document.title = 'Daniel Negreanu | Kid Poker Experience';
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'A premium interactive Daniel Negreanu experience built around Kid Poker’s legacy, live stats, media, training, trophies, and fan engagement.');
+    }
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', 'Daniel Negreanu | Kid Poker Experience');
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'A flagship digital destination for Kid Poker: legacy, stats, media, training, trophies, and fans.');
+    }
+
+    setText('.brand-copy small', 'Kid Poker Experience');
+    setText('[data-preloader] p', 'Entering the Kid Poker Experience');
+    setText('.hero .eyebrow', 'The Kid Poker Experience');
+    setText('#hero-title', 'The definitive digital home for Daniel Negreanu.');
+    setText('.hero-lede', 'Legacy, live poker energy, career milestones, media, training, and fan engagement — built as a premium interactive destination for poker’s most recognizable ambassador.');
+    setText('.header-cta', 'Experience Map');
+    setText('.hero-actions .button-primary', 'Start the Journey');
+    setText('.hero-actions .button-ghost', 'Explore the Platform');
+    setText('.dashboard-note', 'Live-data ready architecture designed to route career stats, media feeds, and tournament updates through secure server-side middleware.');
+
+    setText('.problem-section .section-kicker', 'Experience Vision');
+    setText('#audit-title', 'A legacy this big deserves an experience this immersive.');
+    const auditIntro = $('.problem-section .split-heading p');
+    if (auditIntro) auditIntro.textContent = 'The platform unifies legacy storytelling, media, stats, education, community, and commerce into one cinematic destination worthy of the Kid Poker brand.';
+
+    const auditCards = $$('.audit-card');
+    const auditUpdates = [
+      ['Live media engine', 'A server-side YouTube and social video layer keeps vlogs, feature-table moments, and interviews current without fragile front-end API calls.'],
+      ['Legacy editorial archive', 'Classic essays, modern commentary, and career-defining perspectives become a premium long-form reading experience.'],
+      ['Unified fan ecosystem', 'Books, training, merch, live updates, community, and media stay inside one high-retention Daniel Negreanu destination.'],
+      ['Real career authority', 'Modern achievements are presented through live stats, interactive comparisons, championship timelines, and milestone storytelling.']
+    ];
+    auditCards.forEach((card, index) => {
+      const update = auditUpdates[index];
+      if (!update) return;
+      setText('h3', update[0], card);
+      setText('p', update[1], card);
+    });
+
+    replaceTextExact('Elite Interactive Brand Platform Concept', 'Elite Interactive Brand Platform');
+    replaceTextExact('Digital Legacy Platform Concept', 'Kid Poker Digital Legacy');
+    replaceTextExact('Live statistics concept dashboard', 'Live career statistics dashboard');
+    replaceTextExact('A complete front-end concept for a modern DanielNegreanu.com: part legacy documentary, part live analytics dashboard, part media portal, and part commercial engine.', 'A premium Daniel Negreanu experience: part legacy documentary, part live analytics dashboard, part media portal, and part fan-engagement engine.');
+    replaceTextExact('The current platform undersells the icon.', 'A legacy this big deserves an experience this immersive.');
+    replaceTextExact('The redesign corrects stale content, fragmented monetization, broken media integrations, and outdated performance architecture through a unified interactive experience.', 'The experience unifies legacy storytelling, live stats, media, training, trophies, and fan engagement into one cinematic destination.');
+    replaceTextExact('The production version would hydrate this from trusted poker databases through protected middleware, not exposed front-end API keys.', 'The data layer is designed to hydrate from trusted poker databases through protected middleware, not exposed front-end API keys.');
+    replaceTextExact('This demo uses CSS-rendered bracelet cards. Production would swap these for optimized Three.js / WebGL models with PBR metal shaders and pointer-controlled lighting.', 'This first build uses web-native championship cards. The next generation can upgrade them into optimized Three.js / WebGL trophy models with PBR metal shaders and pointer-controlled lighting.');
+    replaceTextExact('A lightweight mockup of the future learning experience: users step through a hand, reveal strategic notes, and stay inside the brand ecosystem.', 'An interactive training pattern where fans step through a hand, reveal strategic notes, and stay inside the Daniel Negreanu learning ecosystem.');
+    replaceTextExact('Production build would load the selected YouTube video through a secure cached endpoint.', 'The full media build can stream the selected video through a secure cached endpoint while keeping fans inside the experience.');
+    replaceTextExact('The static demo shows the front-end vision. The production build would be decoupled, cached, API-safe, and ready for content, commerce, and LMS integration.', 'This front-end foundation is built to graduate into a decoupled, cached, API-safe platform ready for content, commerce, media, community, and LMS integration.');
+    replaceTextExact('The concept can start as a static proposal/demo, then graduate into a full Next.js ecosystem once assets, data permissions, and commerce decisions are approved.', 'The platform can evolve from this live front-end foundation into a full Next.js ecosystem as official assets, data permissions, media feeds, and commerce systems come online.');
+    replaceTextExact('Production footer module would include responsible-gaming resources, support links, jurisdiction-specific language, and visible help pathways.', 'The platform can include responsible-gaming resources, support links, jurisdiction-specific language, and visible help pathways.');
+    replaceTextExact('Static front-end demo for proposal, pitch, and early-stage stakeholder review.', 'A premium interactive fan and legacy experience built for the next era of Kid Poker online.');
+    replaceTextExact('Daniel Negreanu Platform Concept', 'Daniel Negreanu Kid Poker Experience');
+    replaceTextExact('Build Roadmap', 'Experience Map');
+    replaceTextExact('See Phased Build', 'Explore the Ecosystem');
+    replaceTextExact('A four-phase path from demo to elite production platform.', 'A four-phase path from live foundation to elite Daniel Negreanu platform.');
   }
 
   const formatNumber = (value, prefix = '') => {
@@ -47,7 +133,7 @@
       window.clearInterval(timer);
       if (loadBar) loadBar.style.width = '100%';
       preloader.classList.add('is-hidden');
-    }, 2600);
+    }, 2200);
   }
 
   function initHeader() {
@@ -299,6 +385,7 @@
 
   function init() {
     loadResponsiveLayer();
+    applyPhaseTwoCopy();
     initPreloader();
     initHeader();
     initCursorLight();
