@@ -1,0 +1,155 @@
+/*
+  Phase 2: flagship experience language + scroll/touch repair layer.
+  This file intentionally overrides anything that could make the page feel sticky on desktop or mobile.
+*/
+
+html,
+body {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior-y: auto !important;
+  touch-action: pan-y pinch-zoom !important;
+  scroll-behavior: auto;
+}
+
+body:not(.modal-open) {
+  overflow-y: auto !important;
+  position: static !important;
+}
+
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+main,
+section,
+.section-shell,
+.hero,
+.problem-section,
+.timeline-section,
+.comparison-section,
+.trophy-room,
+.dual-section,
+.lab-section,
+.media-section,
+.architecture-section,
+.commerce-section,
+.roadmap-section,
+.responsible-section,
+.hero-content,
+.hero-dashboard,
+.audit-grid,
+.timeline,
+.trophy-grid,
+.experience-grid,
+.vlog-carousel,
+.architecture-grid,
+.roadmap-grid,
+.commerce-grid {
+  touch-action: pan-y pinch-zoom !important;
+}
+
+#ambient-canvas,
+.site-glow,
+.cursor-light,
+.hero-video-sim {
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+.preloader.is-hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.button,
+.nav-toggle,
+.primary-nav a,
+.header-cta,
+.tab,
+.street,
+.trophy-card,
+.vlog-card,
+.modal-close,
+.lightbox-close {
+  touch-action: manipulation !important;
+}
+
+.primary-nav.open {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 2.2rem 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(245, 199, 107, .38), transparent);
+}
+
+body.phase-two-live .hero-dashboard,
+body.phase-two-live .audit-card,
+body.phase-two-live .timeline-card,
+body.phase-two-live .comparison-table,
+body.phase-two-live .trophy-card,
+body.phase-two-live .tab-shell,
+body.phase-two-live .hand-lab,
+body.phase-two-live .vlog-card,
+body.phase-two-live .arch-card,
+body.phase-two-live .roadmap-card,
+body.phase-two-live .commerce-stack,
+body.phase-two-live .responsible-card {
+  border-color: rgba(245, 199, 107, .18);
+}
+
+body.phase-two-live .hero-dashboard {
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .48), 0 0 54px rgba(245, 199, 107, .08);
+}
+
+body.phase-two-live .section-kicker,
+body.phase-two-live .eyebrow,
+body.phase-two-live .dashboard-label {
+  text-shadow: 0 0 22px rgba(245, 199, 107, .22);
+}
+
+@media (max-width: 760px) {
+  html,
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero {
+    touch-action: pan-y pinch-zoom !important;
+  }
+
+  .hero-video-sim {
+    height: min(78dvh, 560px);
+  }
+
+  .hero h1 {
+    max-width: 12ch;
+  }
+
+  .hero-lede {
+    color: rgba(247, 241, 230, .88);
+  }
+
+  .primary-nav.open {
+    max-height: min(70dvh, 430px);
+  }
+}
+
+@media (max-width: 340px) {
+  .hero h1 {
+    max-width: 11ch;
+  }
+
+  .hero-actions {
+    margin-top: 1.4rem;
+  }
+}
