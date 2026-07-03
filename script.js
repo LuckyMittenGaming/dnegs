@@ -1,7 +1,26 @@
 (() => {
+  'use strict';
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
+  function loadResponsiveLayer() {
+    if (!document.querySelector('link[data-phase-one-responsive]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/responsive.css?v=phase-1';
+      link.setAttribute('data-phase-one-responsive', 'true');
+      document.head.appendChild(link);
+    }
+
+    if (!document.getElementById('critical-responsive-guard')) {
+      const style = document.createElement('style');
+      style.id = 'critical-responsive-guard';
+      style.textContent = 'html,body{max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}.preloader{max-width:100vw}.section-shell{max-width:100%}@media(max-width:390px){.hero h1{overflow-wrap:anywhere}.stat-grid{grid-template-columns:1fr}.button{width:100%}}';
+      document.head.appendChild(style);
+    }
+  }
 
   const formatNumber = (value, prefix = '') => {
     const numeric = Number(value);
@@ -12,17 +31,23 @@
   function initPreloader() {
     const preloader = $('[data-preloader]');
     const loadBar = $('[data-load-bar]');
-    if (!preloader || !loadBar) return;
+    if (!preloader) return;
 
     let progress = 0;
     const timer = window.setInterval(() => {
-      progress += Math.random() * 24;
-      loadBar.style.width = `${Math.min(progress, 100)}%`;
+      progress += prefersReducedMotion ? 55 : Math.random() * 24;
+      if (loadBar) loadBar.style.width = `${Math.min(progress, 100)}%`;
       if (progress >= 100) {
         window.clearInterval(timer);
-        window.setTimeout(() => preloader.classList.add('is-hidden'), 350);
+        window.setTimeout(() => preloader.classList.add('is-hidden'), 320);
       }
     }, prefersReducedMotion ? 30 : 120);
+
+    window.setTimeout(() => {
+      window.clearInterval(timer);
+      if (loadBar) loadBar.style.width = '100%';
+      preloader.classList.add('is-hidden');
+    }, 2600);
   }
 
   function initHeader() {
@@ -64,10 +89,12 @@
     const animate = (node) => {
       const target = Number(node.dataset.count || 0);
       const prefix = node.dataset.prefix || '';
+
       if (prefersReducedMotion) {
         node.textContent = formatNumber(target, prefix);
         return;
       }
+
       const duration = 1500;
       const start = performance.now();
       const tick = (now) => {
@@ -86,13 +113,14 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.45 });
+    }, { threshold: 0.35 });
 
     stats.forEach((node) => observer.observe(node));
   }
 
   function initReveals() {
     const nodes = $$('.reveal-up, .reveal-left, .reveal-right');
+
     if (prefersReducedMotion) {
       nodes.forEach((node) => node.classList.add('revealed'));
       return;
@@ -103,15 +131,15 @@
       nodes.forEach((node) => {
         gsap.fromTo(node, {
           autoAlpha: 0,
-          y: node.classList.contains('reveal-up') ? 32 : 0,
-          x: node.classList.contains('reveal-left') ? -42 : node.classList.contains('reveal-right') ? 42 : 0
+          y: node.classList.contains('reveal-up') ? 28 : 0,
+          x: node.classList.contains('reveal-left') ? -34 : node.classList.contains('reveal-right') ? 34 : 0
         }, {
           autoAlpha: 1,
           x: 0,
           y: 0,
-          duration: 0.85,
+          duration: 0.78,
           ease: 'power3.out',
-          scrollTrigger: { trigger: node, start: 'top 84%' }
+          scrollTrigger: { trigger: node, start: 'top 86%' }
         });
       });
       return;
@@ -124,16 +152,16 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
+
     nodes.forEach((node) => observer.observe(node));
   }
 
   function initTabs() {
-    const tabs = $$('[data-tab]');
-    tabs.forEach((tab) => {
+    $$('[data-tab]').forEach((tab) => {
       tab.addEventListener('click', () => {
         const target = tab.dataset.tab;
-        tabs.forEach((item) => {
+        $$('[data-tab]').forEach((item) => {
           const active = item === tab;
           item.classList.toggle('active', active);
           item.setAttribute('aria-selected', String(active));
@@ -150,15 +178,17 @@
       turn: ['Turn: compound the story.', 'A polarizing turn card lets the aggressor represent premium value while forcing dominated holdings into uncomfortable calls.'],
       river: ['River: convert credibility into action.', 'The final bet is less about the card and more about whether every previous action built a believable narrative.']
     };
+
     const note = $('[data-street-note]');
     const cards = $$('[data-community-cards] span');
+
     $$('[data-street]').forEach((button, index) => {
       button.addEventListener('click', () => {
         $$('[data-street]').forEach((item) => item.classList.toggle('active', item === button));
         const [title, body] = notes[button.dataset.street] || notes.preflop;
         if (note) note.innerHTML = `<h3>${title}</h3><p>${body}</p>`;
         cards.forEach((card, cardIndex) => {
-          card.style.opacity = cardIndex <= index + 1 ? '1' : '.26';
+          card.style.opacity = cardIndex <= index + 1 ? '1' : '.28';
           card.style.transform = cardIndex <= index + 1 ? 'translateY(0)' : 'translateY(8px)';
         });
       });
@@ -180,14 +210,14 @@
         if (body) body.textContent = copy || '';
         if (payout) payout.textContent = prize || '';
         document.body.classList.add('modal-open');
-        if (typeof modal.showModal === 'function') modal.showModal();
+        if (typeof modal.showModal === 'function' && !modal.open) modal.showModal();
         else modal.setAttribute('open', '');
       });
     });
 
     const closeModal = () => {
       document.body.classList.remove('modal-open');
-      if (typeof modal.close === 'function') modal.close();
+      if (typeof modal.close === 'function' && modal.open) modal.close();
       else modal.removeAttribute('open');
     };
 
@@ -232,8 +262,9 @@
   function initAmbientCanvas() {
     const canvas = $('#ambient-canvas');
     if (!canvas || prefersReducedMotion) return;
+
     const ctx = canvas.getContext('2d');
-    const particles = Array.from({ length: 70 }, () => ({
+    const particles = Array.from({ length: window.innerWidth < 520 ? 38 : 70 }, () => ({
       x: Math.random(),
       y: Math.random(),
       r: Math.random() * 1.8 + 0.35,
@@ -266,7 +297,8 @@
     window.addEventListener('resize', resize, { passive: true });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function init() {
+    loadResponsiveLayer();
     initPreloader();
     initHeader();
     initCursorLight();
@@ -277,5 +309,13 @@
     initTrophyModal();
     initVideoLightbox();
     initAmbientCanvas();
-  });
+  }
+
+  loadResponsiveLayer();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
