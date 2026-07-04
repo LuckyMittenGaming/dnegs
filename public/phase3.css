@@ -1,0 +1,220 @@
+/* Phase 3: convert explanatory sections into finished flagship experience modules. */
+
+.command-center {
+  padding: clamp(3.4rem, 8vw, 6rem) 0;
+  position: relative;
+}
+
+.command-center::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(var(--safe-page, 24px) * -1);
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 30%, rgba(83, 183, 255, .14), transparent 18rem),
+    radial-gradient(circle at 86% 20%, rgba(245, 199, 107, .18), transparent 22rem);
+  opacity: .84;
+}
+
+.command-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.command-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  padding: 1.25rem;
+  border-radius: clamp(22px, 3vw, 34px);
+  display: grid;
+  align-content: space-between;
+}
+
+.command-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.08), transparent 40%),
+    radial-gradient(circle at 18% 12%, rgba(245,199,107,.16), transparent 12rem);
+}
+
+.command-card > * {
+  position: relative;
+}
+
+.command-live {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(245, 199, 107, .23), transparent 15rem),
+    linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+}
+
+.command-topline {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--gold);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #59f4a5;
+  box-shadow: 0 0 18px rgba(89, 244, 165, .9);
+  animation: livePulse 1.45s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { transform: scale(.85); opacity: .65; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+
+.command-card h3 {
+  margin: .9rem 0 .55rem;
+  font-family: var(--font-display);
+  letter-spacing: -.04em;
+  line-height: .95;
+  font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+}
+
+.command-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.command-meter {
+  height: 8px;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+}
+
+.command-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #59f4a5, var(--gold), #fff0bd);
+  box-shadow: 0 0 18px rgba(245,199,107,.42);
+}
+
+.command-card small {
+  color: rgba(247,241,230,.72);
+  font-weight: 800;
+}
+
+.mini-link {
+  display: inline-flex;
+  width: max-content;
+  margin-top: 1.2rem;
+  min-height: 38px;
+  align-items: center;
+  padding: .62rem .88rem;
+  border: 1px solid rgba(245,199,107,.25);
+  border-radius: 999px;
+  color: var(--gold2);
+  font-weight: 900;
+  background: rgba(245,199,107,.08);
+}
+
+body.phase-three-live .architecture-section .section-kicker,
+body.phase-three-live .roadmap-section .section-kicker,
+body.phase-three-live .commerce-section .section-kicker {
+  color: #fff0bd;
+}
+
+body.phase-three-live .arch-card,
+body.phase-three-live .roadmap-card,
+body.phase-three-live .commerce-item {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(245,199,107,.1), transparent 12rem),
+    rgba(255,255,255,.045);
+}
+
+body.phase-three-live .roadmap-card h3,
+body.phase-three-live .arch-card h3 {
+  font-family: var(--font-display);
+  letter-spacing: -.035em;
+}
+
+body.phase-three-live .vlog-card,
+body.phase-three-live .trophy-card,
+body.phase-three-live .command-card {
+  will-change: transform;
+}
+
+body.phase-three-live .vlog-card:focus-visible,
+body.phase-three-live .trophy-card:focus-visible,
+body.phase-three-live .mini-link:focus-visible,
+body.phase-three-live .button:focus-visible {
+  outline: 2px solid var(--gold2);
+  outline-offset: 4px;
+}
+
+body.phase-three-live .media-section .vlog-card strong::after {
+  content: '  •  Play';
+  color: var(--gold);
+  font-size: .78rem;
+}
+
+body.phase-three-live .comparison-table::before {
+  content: 'LEGEND BOARD';
+  display: block;
+  padding: .9rem 1.25rem 0;
+  color: var(--gold);
+  font-weight: 900;
+  font-size: .72rem;
+  letter-spacing: .14em;
+}
+
+body.phase-three-live .responsible-card {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(89,244,165,.11), transparent 16rem),
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+}
+
+@media (max-width: 1080px) {
+  .command-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .command-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-card {
+    min-height: 220px;
+    padding: 1.05rem;
+  }
+
+  .command-card h3 {
+    font-size: clamp(1.55rem, 9vw, 2.25rem);
+  }
+
+  .mini-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 300px) {
+  .command-card {
+    min-height: 200px;
+    border-radius: 18px;
+  }
+
+  .command-card h3 {
+    font-size: 1.35rem;
+  }
+}
