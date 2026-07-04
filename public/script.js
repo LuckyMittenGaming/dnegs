@@ -14,9 +14,19 @@
     document.head.appendChild(link);
   }
 
-  function loadResponsiveLayer() {
+  function appendScript(src, marker) {
+    if (document.querySelector(`script[${marker}]`)) return;
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.setAttribute(marker, 'true');
+    document.body.appendChild(script);
+  }
+
+  function loadExperienceLayers() {
     appendStylesheet('/responsive.css?v=phase-1', 'data-phase-one-responsive');
     appendStylesheet('/phase2.css?v=phase-2-scroll-fix', 'data-phase-two-polish');
+    appendStylesheet('/phase3.css?v=phase-3', 'data-phase-three-polish');
 
     if (!document.getElementById('critical-responsive-guard')) {
       const style = document.createElement('style');
@@ -42,7 +52,7 @@
     });
   }
 
-  function applyPhaseTwoCopy() {
+  function applyFlagshipCopy() {
     document.body.classList.add('phase-two-live');
     document.title = 'Daniel Negreanu | Kid Poker Experience';
 
@@ -67,19 +77,19 @@
     setText('.header-cta', 'Experience Map');
     setText('.hero-actions .button-primary', 'Start the Journey');
     setText('.hero-actions .button-ghost', 'Explore the Platform');
-    setText('.dashboard-note', 'Live-data ready architecture designed to route career stats, media feeds, and tournament updates through secure server-side middleware.');
+    setText('.dashboard-note', 'Live-data ready architecture routes career stats, media feeds, and tournament updates through secure server-side middleware.');
 
     setText('.problem-section .section-kicker', 'Experience Vision');
     setText('#audit-title', 'A legacy this big deserves an experience this immersive.');
     const auditIntro = $('.problem-section .split-heading p');
-    if (auditIntro) auditIntro.textContent = 'The platform unifies legacy storytelling, media, stats, education, community, and commerce into one cinematic destination worthy of the Kid Poker brand.';
+    if (auditIntro) auditIntro.textContent = 'The experience unifies legacy storytelling, media, stats, education, community, and commerce into one cinematic destination worthy of the Kid Poker brand.';
 
     const auditCards = $$('.audit-card');
     const auditUpdates = [
       ['Live media engine', 'A server-side YouTube and social video layer keeps vlogs, feature-table moments, and interviews current without fragile front-end API calls.'],
       ['Legacy editorial archive', 'Classic essays, modern commentary, and career-defining perspectives become a premium long-form reading experience.'],
       ['Unified fan ecosystem', 'Books, training, merch, live updates, community, and media stay inside one high-retention Daniel Negreanu destination.'],
-      ['Real career authority', 'Modern achievements are presented through live stats, interactive comparisons, championship timelines, and milestone storytelling.']
+      ['Real career authority', 'Modern achievements come alive through interactive stats, championship timelines, and milestone storytelling.']
     ];
     auditCards.forEach((card, index) => {
       const update = auditUpdates[index];
@@ -88,31 +98,21 @@
       setText('p', update[1], card);
     });
 
-    replaceTextExact('Elite Interactive Brand Platform Concept', 'Elite Interactive Brand Platform');
-    replaceTextExact('Digital Legacy Platform Concept', 'Kid Poker Digital Legacy');
+    replaceTextExact('Elite Interactive Brand Platform Concept', 'The Kid Poker Experience');
+    replaceTextExact('Digital Legacy Platform Concept', 'Kid Poker Experience');
     replaceTextExact('Live statistics concept dashboard', 'Live career statistics dashboard');
     replaceTextExact('A complete front-end concept for a modern DanielNegreanu.com: part legacy documentary, part live analytics dashboard, part media portal, and part commercial engine.', 'A premium Daniel Negreanu experience: part legacy documentary, part live analytics dashboard, part media portal, and part fan-engagement engine.');
-    replaceTextExact('The current platform undersells the icon.', 'A legacy this big deserves an experience this immersive.');
-    replaceTextExact('The redesign corrects stale content, fragmented monetization, broken media integrations, and outdated performance architecture through a unified interactive experience.', 'The experience unifies legacy storytelling, live stats, media, training, trophies, and fan engagement into one cinematic destination.');
-    replaceTextExact('The production version would hydrate this from trusted poker databases through protected middleware, not exposed front-end API keys.', 'The data layer is designed to hydrate from trusted poker databases through protected middleware, not exposed front-end API keys.');
-    replaceTextExact('This demo uses CSS-rendered bracelet cards. Production would swap these for optimized Three.js / WebGL models with PBR metal shaders and pointer-controlled lighting.', 'This first build uses web-native championship cards. The next generation can upgrade them into optimized Three.js / WebGL trophy models with PBR metal shaders and pointer-controlled lighting.');
-    replaceTextExact('A lightweight mockup of the future learning experience: users step through a hand, reveal strategic notes, and stay inside the brand ecosystem.', 'An interactive training pattern where fans step through a hand, reveal strategic notes, and stay inside the Daniel Negreanu learning ecosystem.');
-    replaceTextExact('Production build would load the selected YouTube video through a secure cached endpoint.', 'The full media build can stream the selected video through a secure cached endpoint while keeping fans inside the experience.');
-    replaceTextExact('The static demo shows the front-end vision. The production build would be decoupled, cached, API-safe, and ready for content, commerce, and LMS integration.', 'This front-end foundation is built to graduate into a decoupled, cached, API-safe platform ready for content, commerce, media, community, and LMS integration.');
-    replaceTextExact('The concept can start as a static proposal/demo, then graduate into a full Next.js ecosystem once assets, data permissions, and commerce decisions are approved.', 'The platform can evolve from this live front-end foundation into a full Next.js ecosystem as official assets, data permissions, media feeds, and commerce systems come online.');
-    replaceTextExact('Production footer module would include responsible-gaming resources, support links, jurisdiction-specific language, and visible help pathways.', 'The platform can include responsible-gaming resources, support links, jurisdiction-specific language, and visible help pathways.');
-    replaceTextExact('Static front-end demo for proposal, pitch, and early-stage stakeholder review.', 'A premium interactive fan and legacy experience built for the next era of Kid Poker online.');
+    replaceTextExact('The production version would hydrate this from trusted poker databases through protected middleware, not exposed front-end API keys.', 'The data layer hydrates from trusted poker databases through protected middleware, not exposed front-end API keys.');
+    replaceTextExact('This demo uses CSS-rendered bracelet cards. Production would swap these for optimized Three.js / WebGL models with PBR metal shaders and pointer-controlled lighting.', 'The trophy room turns championship hardware into an interactive legacy vault with rich tournament context, payouts, and career-defining moments.');
+    replaceTextExact('A lightweight mockup of the future learning experience: users step through a hand, reveal strategic notes, and stay inside the brand ecosystem.', 'Fans step through the hand, reveal strategic notes, and learn inside the Daniel Negreanu poker ecosystem.');
+    replaceTextExact('Production build would load the selected YouTube video through a secure cached endpoint.', 'The media player keeps fans inside the experience while opening selected videos in a cinematic viewing layer.');
+    replaceTextExact('The static demo shows the front-end vision. The production build would be decoupled, cached, API-safe, and ready for content, commerce, and LMS integration.', 'The experience runs on a clean front-end foundation ready for content, commerce, media, community, and learning systems.');
+    replaceTextExact('Production footer module would include responsible-gaming resources, support links, jurisdiction-specific language, and visible help pathways.', 'Support resources, responsible-gaming links, and help pathways stay visible for players who need them.');
     replaceTextExact('Daniel Negreanu Platform Concept', 'Daniel Negreanu Kid Poker Experience');
+    replaceTextExact('Static front-end demo for proposal, pitch, and early-stage stakeholder review.', 'A premium interactive fan and legacy experience built for the next era of Kid Poker online.');
     replaceTextExact('Build Roadmap', 'Experience Map');
     replaceTextExact('See Phased Build', 'Explore the Ecosystem');
-    replaceTextExact('A four-phase path from demo to elite production platform.', 'A four-phase path from live foundation to elite Daniel Negreanu platform.');
   }
-
-  const formatNumber = (value, prefix = '') => {
-    const numeric = Number(value);
-    if (Number.isNaN(numeric)) return `${prefix}${value}`;
-    return `${prefix}${Math.round(numeric).toLocaleString('en-US')}`;
-  };
 
   function initPreloader() {
     const preloader = $('[data-preloader]');
@@ -121,19 +121,19 @@
 
     let progress = 0;
     const timer = window.setInterval(() => {
-      progress += prefersReducedMotion ? 55 : Math.random() * 24;
+      progress += prefersReducedMotion ? 60 : Math.random() * 28;
       if (loadBar) loadBar.style.width = `${Math.min(progress, 100)}%`;
       if (progress >= 100) {
         window.clearInterval(timer);
-        window.setTimeout(() => preloader.classList.add('is-hidden'), 320);
+        window.setTimeout(() => preloader.classList.add('is-hidden'), 260);
       }
-    }, prefersReducedMotion ? 30 : 120);
+    }, prefersReducedMotion ? 20 : 110);
 
     window.setTimeout(() => {
       window.clearInterval(timer);
       if (loadBar) loadBar.style.width = '100%';
       preloader.classList.add('is-hidden');
-    }, 2200);
+    }, 1900);
   }
 
   function initHeader() {
@@ -161,7 +161,7 @@
 
   function initCursorLight() {
     const light = $('.cursor-light');
-    if (!light || prefersReducedMotion) return;
+    if (!light || prefersReducedMotion || window.matchMedia('(hover: none)').matches) return;
     window.addEventListener('pointermove', (event) => {
       light.style.setProperty('--x', `${event.clientX}px`);
       light.style.setProperty('--y', `${event.clientY}px`);
@@ -172,16 +172,15 @@
     const stats = $$('[data-count]');
     if (!stats.length) return;
 
+    const formatNumber = (value, prefix = '') => `${prefix}${Math.round(Number(value) || 0).toLocaleString('en-US')}`;
     const animate = (node) => {
       const target = Number(node.dataset.count || 0);
       const prefix = node.dataset.prefix || '';
-
       if (prefersReducedMotion) {
         node.textContent = formatNumber(target, prefix);
         return;
       }
-
-      const duration = 1500;
+      const duration = 1400;
       const start = performance.now();
       const tick = (now) => {
         const progress = Math.min((now - start) / duration, 1);
@@ -199,38 +198,12 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.35 });
-
+    }, { threshold: 0.25 });
     stats.forEach((node) => observer.observe(node));
   }
 
   function initReveals() {
     const nodes = $$('.reveal-up, .reveal-left, .reveal-right');
-
-    if (prefersReducedMotion) {
-      nodes.forEach((node) => node.classList.add('revealed'));
-      return;
-    }
-
-    if (window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-      nodes.forEach((node) => {
-        gsap.fromTo(node, {
-          autoAlpha: 0,
-          y: node.classList.contains('reveal-up') ? 28 : 0,
-          x: node.classList.contains('reveal-left') ? -34 : node.classList.contains('reveal-right') ? 34 : 0
-        }, {
-          autoAlpha: 1,
-          x: 0,
-          y: 0,
-          duration: 0.78,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: node, start: 'top 86%' }
-        });
-      });
-      return;
-    }
-
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -238,8 +211,7 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-
+    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
     nodes.forEach((node) => observer.observe(node));
   }
 
@@ -264,10 +236,8 @@
       turn: ['Turn: compound the story.', 'A polarizing turn card lets the aggressor represent premium value while forcing dominated holdings into uncomfortable calls.'],
       river: ['River: convert credibility into action.', 'The final bet is less about the card and more about whether every previous action built a believable narrative.']
     };
-
     const note = $('[data-street-note]');
     const cards = $$('[data-community-cards] span');
-
     $$('[data-street]').forEach((button, index) => {
       button.addEventListener('click', () => {
         $$('[data-street]').forEach((item) => item.classList.toggle('active', item === button));
@@ -306,12 +276,10 @@
       if (typeof modal.close === 'function' && modal.open) modal.close();
       else modal.removeAttribute('open');
     };
-
     close?.addEventListener('click', closeModal);
     modal.addEventListener('click', (event) => {
       const rect = modal.getBoundingClientRect();
-      const clickedBackdrop = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
-      if (clickedBackdrop) closeModal();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeModal();
     });
   }
 
@@ -320,13 +288,11 @@
     const title = $('[data-lightbox-title]');
     const close = $('[data-lightbox-close]');
     if (!lightbox) return;
-
     const closeLightbox = () => {
       lightbox.classList.remove('active');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('modal-open');
     };
-
     $$('[data-video-title]').forEach((card) => {
       card.addEventListener('click', () => {
         if (title) title.textContent = card.dataset.videoTitle || 'Video preview';
@@ -335,36 +301,24 @@
         document.body.classList.add('modal-open');
       });
     });
-
     close?.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) closeLightbox();
-    });
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeLightbox();
-    });
+    lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+    window.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeLightbox(); });
   }
 
   function initAmbientCanvas() {
     const canvas = $('#ambient-canvas');
     if (!canvas || prefersReducedMotion) return;
-
     const ctx = canvas.getContext('2d');
-    const particles = Array.from({ length: window.innerWidth < 520 ? 38 : 70 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      r: Math.random() * 1.8 + 0.35,
-      s: Math.random() * 0.24 + 0.08,
-      a: Math.random() * 0.45 + 0.1
+    const particles = Array.from({ length: window.innerWidth < 520 ? 34 : 60 }, () => ({
+      x: Math.random(), y: Math.random(), r: Math.random() * 1.8 + .35, s: Math.random() * .24 + .08, a: Math.random() * .42 + .1
     }));
-
     const resize = () => {
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = window.innerWidth * ratio;
       canvas.height = window.innerHeight * ratio;
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     };
-
     const draw = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       particles.forEach((p) => {
@@ -377,15 +331,14 @@
       });
       requestAnimationFrame(draw);
     };
-
     resize();
     draw();
     window.addEventListener('resize', resize, { passive: true });
   }
 
   function init() {
-    loadResponsiveLayer();
-    applyPhaseTwoCopy();
+    loadExperienceLayers();
+    applyFlagshipCopy();
     initPreloader();
     initHeader();
     initCursorLight();
@@ -396,9 +349,10 @@
     initTrophyModal();
     initVideoLightbox();
     initAmbientCanvas();
+    appendScript('/phase3.js?v=phase-3', 'data-phase-three-script');
   }
 
-  loadResponsiveLayer();
+  loadExperienceLayers();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
