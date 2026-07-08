@@ -7,11 +7,16 @@ This version is intentionally **brand-first, SEO-light, interactive, dark, emoti
 ## What is included
 
 - Cinematic full-screen hero with CSS-generated poker-room visuals
-- Ambient canvas particle layer and cursor spotlight
-- Premium loading sequence
+- Curtain-raise page-load sequence with masked hero-title reveal
+- Ambient canvas particle layer, cursor spotlight, and morphing magnetic cursor
+- Magnetic CTAs with hover shine and pointer pull
 - Responsive glassmorphism navigation with mobile hamburger
 - Career pulse stat cards with animated counters
+- Pure CSS kinetic marquee for brand-energy pacing
 - Brand manifesto / experience vision section
+- Pinned GSAP-style river reveal scroll theatre
+- 3D depth hover tracking on cards and media panels
+- Velocity-skew scroll effect on cinematic elements
 - Emotional story timeline
 - Interactive “The Read” hand decision module
 - Trophy Room 2.0 cards with modal details
@@ -27,14 +32,16 @@ This version is intentionally **brand-first, SEO-light, interactive, dark, emoti
 ```text
 index.html
 styles.css
+wow.css
 script.js
+wow.js
 public/script.js
 package.json
 vercel.json
 README.md
 ```
 
-`public/script.js` mirrors the root `script.js` for deployment compatibility with prior Vercel/static-path behavior.
+`script.js` handles the base interactive experience. `wow.js` and `wow.css` are intentionally separated as a cinematic enhancement layer so the core build stays stable.
 
 ## Local preview
 
