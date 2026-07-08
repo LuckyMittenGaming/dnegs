@@ -14,8 +14,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./wow.css" />
 </head>
 <body>
+  <div class="load-curtain" aria-hidden="true"></div>
+  <div class="custom-cursor" aria-hidden="true"><span class="cursor-text">VIEW</span></div>
+
   <div class="preloader" data-preloader aria-live="polite" aria-label="Loading the Kid Poker Experience">
     <div class="preloader__ring" aria-hidden="true"><span>DN</span><i></i></div>
     <p>Reading the room</p>
@@ -42,13 +46,13 @@
 
   <main id="top">
     <section class="hero section-shell" aria-labelledby="hero-title">
-      <div class="hero__cinema" aria-hidden="true">
+      <div class="hero__cinema velocity-skew" aria-hidden="true">
         <div class="table-halo"></div><div class="spotlight spotlight-a"></div><div class="spotlight spotlight-b"></div>
         <div class="felt-table"><div class="dealer-button">D</div><div class="chip chip-a"></div><div class="chip chip-b"></div><div class="chip chip-c"></div><div class="hero-card card-a">A♠</div><div class="hero-card card-b">K♥</div><div class="hero-card card-c">Q♣</div></div>
       </div>
       <div class="hero__content reveal-up">
         <p class="eyebrow">The Official-Site Reimagining</p>
-        <h1 id="hero-title">Kid Poker. Still reading the room.</h1>
+        <h1 id="hero-title"><span class="text-mask"><span class="reveal-text">Kid Poker.</span></span><span class="text-mask"><span class="reveal-text text-accent">Still reading the room.</span></span></h1>
         <p class="hero__lede">A cinematic, suspenseful, beautiful DanielNegreanu.com concept built like a living poker documentary: legacy, live reads, trophy-room energy, daily media, learning, sponsors, and fans under one unforgettable roof.</p>
         <div class="hero__actions"><a class="button button--primary" href="#read">Enter the Hand</a><a class="button button--ghost" href="#story">See the Story</a></div>
       </div>
@@ -64,6 +68,13 @@
       </aside>
     </section>
 
+    <section class="marquee-wrapper" aria-label="Kid Poker kinetic value marquee">
+      <div class="marquee-track">
+        <div class="marquee-content"><span>READ THE ROOM</span><span>•</span><span>PRESSURE</span><span>•</span><span>LEGACY</span><span>•</span><span>THE RIVER</span><span>•</span><span>KID POKER</span><span>•</span></div>
+        <div class="marquee-content" aria-hidden="true"><span>READ THE ROOM</span><span>•</span><span>PRESSURE</span><span>•</span><span>LEGACY</span><span>•</span><span>THE RIVER</span><span>•</span><span>KID POKER</span><span>•</span></div>
+      </div>
+    </section>
+
     <section class="manifesto section-shell" aria-labelledby="manifesto-title">
       <p class="section-kicker">What This Site Should Feel Like</p>
       <div class="manifesto__grid"><h2 id="manifesto-title">Not a poker blog. A digital arena.</h2><p>Daniel’s current web presence should not feel like an archive. It should feel like the lights dim, the rail goes silent, the river card is coming, and the most recognizable voice in poker is about to explain what everyone else missed.</p></div>
@@ -72,6 +83,38 @@
         <article class="pillar-card reveal-up"><span>02</span><h3>Human</h3><p>Touches of Toronto, family, setbacks, humor, reinvention, and the life behind the Kid Poker persona.</p></article>
         <article class="pillar-card reveal-up"><span>03</span><h3>Interactive</h3><p>Hand decisions, trophy modals, media lightboxes, fan paths, timeline reveals, and sponsor-ready storytelling modules.</p></article>
         <article class="pillar-card reveal-up"><span>04</span><h3>Built to grow</h3><p>Static demo today; data-connected, CMS-backed, media-rich, commerce-ready platform tomorrow.</p></article>
+      </div>
+    </section>
+
+    <section class="river-stage" id="river-stage" aria-labelledby="river-title">
+      <div class="river-pin">
+        <div class="river-bg-card river-card-a" aria-hidden="true">A♠</div>
+        <div class="river-bg-card river-card-b" aria-hidden="true">K♥</div>
+        <div class="river-bg-card river-card-c" aria-hidden="true">J♣</div>
+        <div class="river-bg-card river-card-d" aria-hidden="true">2♦</div>
+        <div class="river-layer river-layer-1">
+          <div class="river-copy">
+            <p class="section-kicker">Pinned Scroll Theatre</p>
+            <h2 id="river-title">The hand slows down.</h2>
+            <p>The page pins. Cards drift into position. The visitor feels the pressure build before the decision is revealed.</p>
+          </div>
+        </div>
+        <div class="river-layer river-layer-2">
+          <div class="river-copy">
+            <div class="river-pot">$186K</div>
+            <h2>Every action tells a story.</h2>
+            <p>Fold, call, raise — the site becomes an interactive poker mind instead of another static celebrity page.</p>
+            <div class="river-options"><span>Fold?</span><span>Call?</span><span>Raise?</span><span>Talk?</span></div>
+          </div>
+        </div>
+        <div class="river-layer river-layer-3">
+          <div class="river-copy">
+            <p class="section-kicker">The Reveal</p>
+            <h2 class="river-final-word">He knows.</h2>
+            <p>This is the face-melting direction: cinematic, suspenseful, interactive, and undeniably Daniel.</p>
+          </div>
+        </div>
+        <div class="river-progress" aria-hidden="true"><span></span></div>
       </div>
     </section>
 
@@ -89,7 +132,7 @@
     <section class="read-lab section-shell" id="read" aria-labelledby="read-title">
       <p class="section-kicker">Signature Interactive Feature</p>
       <div class="split-heading"><h2 id="read-title">The Read: make visitors think like Daniel.</h2><p>This is the “wow” module. Visitors step into a hand, choose a line, and reveal Daniel-style logic. It creates a reason to stay, share, and come back.</p></div>
-      <div class="hand-module glass reveal-up">
+      <div class="hand-module glass reveal-up velocity-skew">
         <div class="table-module" aria-hidden="true"><div class="seat seat-one">Villain<br><strong>BTN</strong></div><div class="seat seat-two">Daniel<br><strong>BB</strong></div><div class="pot-size">POT <strong>$186K</strong></div><div class="community-cards" data-community-cards><span>A♠</span><span>7♦</span><span>4♣</span><span>J♥</span><span>2♠</span></div></div>
         <div class="decision-panel"><p class="panel-kicker">Decision Node</p><h3 data-read-title>Preflop: what story starts here?</h3><p data-read-body>Position, image, stack depth, and opening frequency all shape the first read before the flop ever lands.</p><div class="read-buttons" role="tablist" aria-label="Hand decision street selector"><button class="street active" type="button" data-street="preflop">Preflop</button><button class="street" type="button" data-street="flop">Flop</button><button class="street" type="button" data-street="turn">Turn</button><button class="street" type="button" data-street="river">River</button></div><div class="choice-grid" aria-label="Decision options"><button type="button" data-choice="fold">Fold</button><button type="button" data-choice="call">Call</button><button type="button" data-choice="raise">Raise</button></div><div class="read-result" data-read-result>Choose a line to reveal the strategic lens.</div></div>
       </div>
@@ -143,5 +186,6 @@
   <dialog class="modal" data-modal><button class="modal-close" type="button" data-modal-close aria-label="Close modal">×</button><div class="modal-content"><p class="eyebrow">Trophy Detail</p><h2 data-modal-title>Trophy title</h2><p data-modal-body>Trophy body</p><div class="modal-payout" data-modal-payout>$0</div></div></dialog>
   <div class="video-lightbox" data-video-lightbox aria-hidden="true"><button class="lightbox-close" type="button" data-lightbox-close aria-label="Close video preview">×</button><div class="video-shell"><div class="video-placeholder"><span>▶</span><h3 data-lightbox-title>Video title</h3><p>Production build will load the selected YouTube, podcast, or short-form clip through a secure cached media endpoint.</p></div></div></div>
   <script src="./script.js"></script>
+  <script src="./wow.js"></script>
 </body>
 </html>
