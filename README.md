@@ -1,19 +1,26 @@
-# Daniel Negreanu Interactive Legacy Platform Demo
+# Daniel Negreanu · Kid Poker Experience
 
-A static, Vercel-ready front-end concept based on the uploaded strategy document. This is designed as a premium proposal/demo site rather than a production data-connected application.
+A static, Vercel-ready front-end concept for a cinematic reimagining of DanielNegreanu.com.
+
+This version is intentionally **brand-first, SEO-light, interactive, dark, emotional, and sponsor-ready**. The goal is not a normal poker blog. The goal is a premium official-site experience that feels like a digital arena for Daniel’s legacy, vlogs, hand reads, training, trophies, partners, and fans.
 
 ## What is included
 
-- Cinematic hero section with ambient canvas, chip/card motion, and animated stats
-- Legacy audit section
-- Scroll-driven Kid Poker Chronicle timeline
-- Comparison table for poker icons
-- Interactive trophy-room cards with modal details
-- On-Track / Off-Track tabbed content model
-- Hand History Lab interaction mockup
-- Vlog portal lightbox mockup
-- Architecture, commerce, roadmap, and responsible-gaming sections
-- Responsive CSS and accessibility-conscious structure
+- Cinematic full-screen hero with CSS-generated poker-room visuals
+- Ambient canvas particle layer and cursor spotlight
+- Premium loading sequence
+- Responsive glassmorphism navigation with mobile hamburger
+- Career pulse stat cards with animated counters
+- Brand manifesto / experience vision section
+- Emotional story timeline
+- Interactive “The Read” hand decision module
+- Trophy Room 2.0 cards with modal details
+- Native-feeling media / vlog command center
+- Learn-from-Daniel content path
+- Sponsor, press, and booking layer
+- A-Z build guardrails section based on the uploaded project checklist
+- Responsible-gaming footer module
+- Accessibility-conscious structure, reduced-motion support, and mobile-first responsive behavior
 
 ## File structure
 
@@ -21,10 +28,13 @@ A static, Vercel-ready front-end concept based on the uploaded strategy document
 index.html
 styles.css
 script.js
+public/script.js
 package.json
 vercel.json
 README.md
 ```
+
+`public/script.js` mirrors the root `script.js` for deployment compatibility with prior Vercel/static-path behavior.
 
 ## Local preview
 
@@ -37,31 +47,30 @@ npm run dev
 
 ## Vercel deployment
 
-This repository is ready to connect to Vercel as a static/Vite project.
-
 Recommended Vercel settings:
 
 - Framework Preset: `Vite`
+- Install Command: `npm install`
 - Build Command: `npm run build`
 - Output Directory: `dist`
-- Install Command: `npm install`
 
-Because the source uses a root `index.html`, Vite will automatically build it into `dist`.
+Because the source uses a root `index.html`, Vite will build the static site into `dist`.
 
 ## Production upgrade path
 
-This demo intentionally mocks advanced functionality. A production build should replace demo-only components with:
+The current build is a polished static front-end foundation. A production official-site build should add:
 
-- Next.js frontend
-- Headless CMS for content and timeline management
-- Server-side middleware for YouTube/stat APIs
-- Cache layer for high-traffic events
-- Headless Shopify commerce
-- LMS/account portal
-- Verified tournament/stat data sources
-- Real imagery/video licensing
-- Accessibility and performance QA
+- Verified Daniel stats and milestone data
+- Official photography/video licensing
+- YouTube/media feed via server-side cache
+- CMS for story, trophy, vlog, and press content
+- Media-kit downloads
+- Contact/booking form handling
+- Sponsor/partner modules
+- Optional Shopify/headless commerce
+- Optional LMS/course/account layer
+- QA against WCAG 2.1 AA, Lighthouse, responsive devices, and launch checklist
 
 ## Data note
 
-The visible statistics and 2026 milestones are demo data derived from the working strategy document. They should be verified against official/current sources before public production use.
+Visible career figures are concept/demo values and should be verified against official/current sources before public production use.
