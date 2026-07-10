@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./wow.css" />
   <link rel="stylesheet" href="./hero-overrides.css" />
+  <link rel="stylesheet" href="./build-out.css" />
 </head>
 <body>
   <div class="load-curtain" aria-hidden="true">
@@ -35,16 +36,9 @@
   <div class="cursor-light" aria-hidden="true"></div>
 
   <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="Daniel Negreanu Experience home">
-      <span class="brand__mark">DN</span>
-      <span class="brand__copy"><strong>Daniel Negreanu</strong><small>Kid Poker Experience</small></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
-      <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
-    </button>
-    <nav id="primary-nav" class="primary-nav" data-nav>
-      <a href="#story">Story</a><a href="#winner">Winner %</a><a href="#trophies">Trophies</a><a href="#watch">Watch</a><a href="#learn">Learn</a><a href="#partners">Partners</a>
-    </nav>
+    <a class="brand" href="#top" aria-label="Daniel Negreanu Experience home"><span class="brand__mark">DN</span><span class="brand__copy"><strong>Daniel Negreanu</strong><small>Kid Poker Experience</small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="primary-nav" class="primary-nav" data-nav><a href="#story">Story</a><a href="#stats">Stats</a><a href="#winner">Winner %</a><a href="#trophies">Trophies</a><a href="#gallery">Gallery</a><a href="#watch">Watch</a><a href="#partners">Partners</a></nav>
     <a class="header-cta" href="#contact">Build the Experience</a>
   </header>
 
@@ -53,25 +47,20 @@
       <div class="hero-main-visual" style="background-image: url('/assets/hero/hero-4.png');">
         <div class="hero-tagline-container">
           <p class="hero-kicker">The Official Kid Poker Experience</p>
-          <h1 id="hero-title" class="hero-title">
-            <span class="highlight-text">Kid</span> Poker
-          </h1>
+          <h1 id="hero-title" class="hero-title"><span class="highlight-text">Kid</span> Poker</h1>
           <img class="hero-signature-img" src="/assets/signatures/Make%20(1920%20x%201920%20px).svg" alt="Daniel Negreanu signature" />
           <p class="hero-subtitle">Still reading the room.</p>
-          <div class="hero-universal-actions">
-            <a href="#winner" class="button button--primary">Are You A Winner?</a>
-            <a href="#story" class="button button--ghost">Watch The Story</a>
-          </div>
+          <div class="hero-universal-actions"><a href="#winner" class="button button--primary">Are You A Winner?</a><a href="#story" class="button button--ghost">Watch The Story</a></div>
         </div>
       </div>
     </section>
 
     <section class="messi-next section-shell" aria-label="Featured Daniel Negreanu experience sections">
       <div class="messi-next__cards">
-        <article><small>Latest</small><strong>WSOP Daily Vlog</strong><span>Video hub module</span></article>
-        <article><small>Interactive</small><strong>Are You A Winner?</strong><span>Live Hold’em odds</span></article>
-        <article><small>Legacy</small><strong>Eight Bracelets</strong><span>Trophy vault</span></article>
-        <article><small>Media</small><strong>Press + Partners</strong><span>Business layer</span></article>
+        <a class="feature-tile" href="#watch"><small>Latest</small><strong><span>WSOP</span><span>Daily Vlog</span></strong><em>Video hub module</em></a>
+        <a class="feature-tile" href="#winner"><small>Interactive</small><strong><span>Are You</span><span>A Winner?</span></strong><em>Live Hold’em odds</em></a>
+        <a class="feature-tile" href="#trophies"><small>Legacy</small><strong><span>Eight</span><span>Bracelets</span></strong><em>Trophy vault</em></a>
+        <a class="feature-tile" href="#partners"><small>Media</small><strong><span>Press +</span><span>Partners</span></strong><em>Business layer</em></a>
       </div>
     </section>
 
@@ -85,7 +74,7 @@
         </div>
         <div class="bio-copy-stack messi-copy-panel">
           <p class="section-kicker">Biography</p>
-          <h2 id="story-title">The story scrolls like a championship film.</h2>
+          <h2 id="story-title">From Toronto ambition to poker icon.</h2>
           <article class="bio-chapter active"><span>01 / Toronto</span><h3>The kid who wanted the game.</h3><p>Early ambition, instinct, risk, and the feeling that poker was not luck — it was language.</p></article>
           <article class="bio-chapter"><span>02 / Vegas</span><h3>Pressure, bankroll, and belief.</h3><p>The climb shows the rebuilds, the late nights, and the courage to sit back down.</p></article>
           <article class="bio-chapter"><span>03 / Kid Poker</span><h3>The table finally listened.</h3><p>The nickname becomes a character reveal: sharp reads, table talk, fearless youth, and a new kind of poker celebrity.</p></article>
@@ -94,56 +83,42 @@
       </div>
     </section>
 
-    <section class="messi-stats-band" aria-labelledby="stats-title">
-      <div class="menu-vertical"><a class="actiu" href="#stats-title">Career</a><a href="#winner">Odds</a><a href="#trophies">Bracelets</a><a href="#watch">Media</a></div>
-      <div class="messi-stats-band__content">
-        <p class="section-kicker">Stats</p><h2 id="stats-title">Numbers as atmosphere, not clutter.</h2>
-        <div class="messi-stat-list">
-          <article><span>$60.4M</span><p>Approximate live tournament earnings placeholder</p></article>
-          <article><span>8</span><p>Bracelet slots built into the trophy room</p></article>
-          <article><span>2014</span><p>Poker Hall of Fame milestone</p></article>
-          <article><span>∞</span><p>Hands, reads, vlogs, stories, and teaching moments</p></article>
-        </div>
+    <section class="stats-experience section-shell" id="stats" aria-labelledby="stats-title">
+      <div class="stats-hero-copy"><p class="section-kicker">Career Stats</p><h2 id="stats-title">Daniel Negreanu by the numbers.</h2><p>Explore the Hendon Mob-style career pulse with earnings, rankings, regions, and year-by-year tournament snapshots.</p></div>
+      <div class="stats-console glass">
+        <div class="stats-controls"><label>Year<select data-stat-year><option value="career">Career</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2014">2014</option><option value="2004">2004</option></select></label><label>View<select data-stat-view><option value="earnings">Earnings</option><option value="rankings">Rankings</option><option value="regions">Regions</option></select></label></div>
+        <div class="stat-showcase"><article class="stat-mega"><small data-stat-kicker>Total Live Earnings</small><strong data-stat-main>$60,437,154</strong><span data-stat-sub>Canada All-Time Money List: #1</span></article><div class="stat-rings"><div><b>9th</b><span>All-Time Money List</span></div><div><b>1st</b><span>Popularity Ranking</span></div><div><b>$8.288M</b><span>Best Live Cash</span></div></div></div>
+        <div class="stat-chart" data-stat-bars></div>
+        <div class="stat-feed" data-stat-feed></div>
       </div>
     </section>
 
     <section class="winner-tool section-shell" id="winner" aria-labelledby="winner-title">
-      <p class="section-kicker">Signature Interactive Feature</p>
-      <div class="split-heading"><h2 id="winner-title">Are You A Winner?!</h2><p>Pick your hole cards, choose the number of opponents, reveal streets, and watch the winning percentages update in real time.</p></div>
-      <div class="winner-shell glass reveal-up" data-winner-tool>
-        <div class="winner-table" aria-label="Poker odds table"><div class="winner-board" data-board></div><div class="winner-hero-zone"><p>You</p><div class="winner-hole" data-hero-cards></div><strong data-hero-odds>0%</strong></div><div class="winner-opponents" data-opponents></div></div>
-        <div class="winner-controls"><div class="control-row"><label for="opponentCount">Opponents</label><select id="opponentCount" data-opponent-count><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div><div class="card-picker"><label>My Card 1<select data-card-select="0"></select></label><label>My Card 2<select data-card-select="1"></select></label></div><div class="winner-actions"><button class="button button--primary" type="button" data-random-hero>Random My Hand</button><button class="button button--ghost" type="button" data-next-street>Reveal Flop</button><button class="button button--ghost" type="button" data-redeal>Re-Deal</button></div><div class="winner-note" data-winner-note>Monte Carlo simulation estimates pre-river odds. River results are exact for the dealt hands.</div><div class="odds-list" data-odds-list></div></div>
-      </div>
+      <p class="section-kicker">Signature Interactive Feature</p><div class="split-heading"><h2 id="winner-title">Are You A Winner?!</h2><p>Pick your hole cards, choose the number of opponents, reveal streets, and watch the winning percentages update in real time.</p></div>
+      <div class="winner-shell glass reveal-up" data-winner-tool><div class="winner-table" aria-label="Poker odds table"><div class="winner-board" data-board></div><div class="winner-hero-zone"><p>You</p><div class="winner-hole" data-hero-cards></div><strong data-hero-odds>0%</strong></div><div class="winner-opponents" data-opponents></div></div><div class="winner-controls"><div class="control-row"><label for="opponentCount">Opponents</label><select id="opponentCount" data-opponent-count><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div><div class="card-picker"><label>My Card 1<select data-card-select="0"></select></label><label>My Card 2<select data-card-select="1"></select></label></div><div class="winner-actions"><button class="button button--primary" type="button" data-random-hero>Random My Hand</button><button class="button button--ghost" type="button" data-next-street>Reveal Flop</button><button class="button button--ghost" type="button" data-redeal>Re-Deal</button></div><div class="winner-note" data-winner-note>Monte Carlo simulation estimates pre-river odds. River results are exact for the dealt hands.</div><div class="odds-list" data-odds-list></div></div></div>
     </section>
 
-    <section class="trophies section-shell messi-trophy-room" id="trophies" aria-labelledby="trophy-title">
-      <p class="section-kicker">Palmarès</p>
-      <div class="split-heading"><h2 id="trophy-title">Eight bracelet slots. One legacy vault.</h2><p>Like Messi’s trophy-led sections, this becomes a clean legacy museum: visual first, stats second, story always available.</p></div>
-      <div class="trophy-grid trophy-grid-eight" data-trophy-grid>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet I|The breakthrough slot: youthful, fearless, and impossible to ignore.|WSOP"><span class="trophy-shine"></span><span class="bracelet">I</span><strong>Bracelet 1</strong><small>Origin</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet II|A second proof point that Kid Poker was not a moment — he was a force.|WSOP"><span class="trophy-shine"></span><span class="bracelet">II</span><strong>Bracelet 2</strong><small>Momentum</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet III|Mixed games, adaptation, and the all-around poker brain.|WSOP"><span class="trophy-shine"></span><span class="bracelet">III</span><strong>Bracelet 3</strong><small>Range</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet IV|The trophy room should show the eras, not just the counts.|WSOP"><span class="trophy-shine"></span><span class="bracelet">IV</span><strong>Bracelet 4</strong><small>Era</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet V|A premium card can later hold real footage, payout, final hand, and media notes.|WSOP"><span class="trophy-shine"></span><span class="bracelet">V</span><strong>Bracelet 5</strong><small>Proof</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet VI|Every bracelet slot is built for verified data once final assets are supplied.|WSOP"><span class="trophy-shine"></span><span class="bracelet">VI</span><strong>Bracelet 6</strong><small>Verified</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet VII|The late-career chapters should feel like reinvention, not nostalgia.|WSOP"><span class="trophy-shine"></span><span class="bracelet">VII</span><strong>Bracelet 7</strong><small>Return</small></button>
-        <button class="trophy-card reveal-up" type="button" data-trophy="Bracelet VIII|Modern Daniel: still dangerous, still relevant, still shaping the conversation.|WSOP"><span class="trophy-shine"></span><span class="bracelet">VIII</span><strong>Bracelet 8</strong><small>Now</small></button>
-      </div>
+    <section class="trophies section-shell vault-section" id="trophies" aria-labelledby="trophy-title">
+      <div class="vault-heading"><p class="section-kicker">Bracelet Vault</p><h2 id="trophy-title">Eight WSOP bracelets. One legendary trophy room.</h2><p>Unlock the vault to reveal Daniel’s championship bracelet wall.</p></div>
+      <div class="vault-stage" data-vault><button class="vault-door" type="button" data-vault-door><span class="vault-wheel"></span><strong>Open The Bracelet Vault</strong><small>Click to reveal the collection</small></button><div class="vault-interior"><div class="trophy-grid trophy-grid-eight" data-trophy-grid><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet I|The breakthrough slot: youthful, fearless, and impossible to ignore.|WSOP"><span class="trophy-shine"></span><span class="bracelet">I</span><strong>Bracelet 1</strong><small>Origin</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet II|A second proof point that Kid Poker was not a moment — he was a force.|WSOP"><span class="trophy-shine"></span><span class="bracelet">II</span><strong>Bracelet 2</strong><small>Momentum</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet III|Mixed games, adaptation, and the all-around poker brain.|WSOP"><span class="trophy-shine"></span><span class="bracelet">III</span><strong>Bracelet 3</strong><small>Range</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet IV|The trophy room should show the eras, not just the counts.|WSOP"><span class="trophy-shine"></span><span class="bracelet">IV</span><strong>Bracelet 4</strong><small>Era</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet V|A premium card can later hold real footage, payout, final hand, and media notes.|WSOP"><span class="trophy-shine"></span><span class="bracelet">V</span><strong>Bracelet 5</strong><small>Proof</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet VI|Every bracelet slot is built for verified data once final assets are supplied.|WSOP"><span class="trophy-shine"></span><span class="bracelet">VI</span><strong>Bracelet 6</strong><small>Verified</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet VII|The late-career chapters should feel like reinvention, not nostalgia.|WSOP"><span class="trophy-shine"></span><span class="bracelet">VII</span><strong>Bracelet 7</strong><small>Return</small></button><button class="trophy-card reveal-up" type="button" data-trophy="Bracelet VIII|Modern Daniel: still dangerous, still relevant, still shaping the conversation.|WSOP"><span class="trophy-shine"></span><span class="bracelet">VIII</span><strong>Bracelet 8</strong><small>Now</small></button></div></div></div>
     </section>
 
-    <section class="messi-news-grid section-shell" id="watch" aria-labelledby="watch-title"><p class="section-kicker">News / Media</p><div class="split-heading"><h2 id="watch-title">A home page that keeps moving.</h2><p>Short-form clips, vlogs, interviews, hand breakdowns, press moments, and partner content sit in a modular card grid.</p></div><div class="media-grid"><button class="media-card media-card--large reveal-up" type="button" data-video-title="WSOP Daily Vlog"><span class="play-dot">▶</span><strong>WSOP Daily Vlog</strong><small>Latest episode module</small></button><button class="media-card reveal-up" type="button" data-video-title="Table Talk Clips"><span class="play-dot">▶</span><strong>Table Talk</strong><small>Short-form social cuts</small></button><button class="media-card reveal-up" type="button" data-video-title="Hand Breakdown"><span class="play-dot">▶</span><strong>Hand Breakdown</strong><small>Strategy + entertainment</small></button><button class="media-card reveal-up" type="button" data-video-title="Podcast / Interview"><span class="play-dot">▶</span><strong>Interviews</strong><small>Press-ready archive</small></button></div></section>
+    <section class="gallery-wall section-shell" id="gallery" aria-labelledby="gallery-title"><div class="split-heading"><div><p class="section-kicker">Gallery</p><h2 id="gallery-title">A life at the tables, pinned to the wall.</h2></div><p>Hover a photo, open the lightbox, and add context under each image as the archive grows.</p></div><div class="photo-wall" data-gallery-wall></div></section>
 
-    <section class="messi-promo-row section-shell" id="learn"><article><p class="section-kicker">Learn</p><h2>Teaching path</h2><p>Beginner concepts, range thinking, hand labs, quizzes, and premium learning paths.</p></article><article id="partners"><p class="section-kicker">Partners</p><h2>Brand layer</h2><p>Sponsor tiles, press kit, approved bios, media contact, and partner storytelling.</p></article></section>
+    <section class="messi-news-grid section-shell vlog-section" id="watch" aria-labelledby="watch-title"><p class="section-kicker">Daniel’s Latest Vlogs</p><div class="split-heading"><h2 id="watch-title">Watch the newest uploads from Kid Poker.</h2><p>The feed pulls Daniel’s latest YouTube uploads dynamically, with a manual fallback for the current WSOP vlog snapshot.</p></div><div id="dnegs-latest-videos" class="youtube-feed" aria-live="polite"><div class="video-loading">Loading latest uploads…</div></div></section>
+
+    <section class="messi-promo-row section-shell learning-partners" id="learn"><article class="learn-card"><p class="section-kicker">Learn</p><h2>Master the game with Daniel.</h2><p>Daniel’s MasterClass is the primary teaching path: fundamentals, reads, ranges, table talk, and decision-making.</p><a class="button button--primary" href="https://www.masterclass.com/classes/daniel-negreanu-teaches-poker" target="_blank" rel="noreferrer">Open MasterClass</a></article><article id="partners" class="partner-card-list"><p class="section-kicker">Partners</p><h2>Daniel’s media & partner ecosystem.</h2><div class="partner-links"><a href="https://ggpoker.com/" target="_blank" rel="noreferrer"><strong>GGPoker</strong><span>Brand ambassador home</span></a><a href="https://www.masterclass.com/classes/daniel-negreanu-teaches-poker" target="_blank" rel="noreferrer"><strong>MasterClass</strong><span>Official poker course</span></a><a href="https://www.youtube.com/channel/UC0w4AA42ItXQEb9aZld87-w" target="_blank" rel="noreferrer"><strong>YouTube</strong><span>Daily vlogs & video</span></a><a href="https://www.pokergo.com/" target="_blank" rel="noreferrer"><strong>PokerGO</strong><span>Streaming appearances</span></a><a href="https://www.wsop.com/" target="_blank" rel="noreferrer"><strong>WSOP</strong><span>Bracelets & history</span></a><a href="https://pokerdb.thehendonmob.com/player.php?a=r&n=181" target="_blank" rel="noreferrer"><strong>Hendon Mob</strong><span>Results database</span></a></div></article></section>
 
     <section class="messi-stadium-footer" id="contact" aria-labelledby="contact-title"><div><p class="section-kicker">Next Move</p><h2 id="contact-title">Assets make it legendary.</h2><p>Official Daniel photography, real video loops, verified data, partner logos, YouTube feeds, media-kit downloads, and CMS workflows turn this from concept into launch-grade.</p></div><a class="button button--primary" href="#top">Back to Top</a></section>
-
     <section class="responsible section-shell" aria-labelledby="responsible-title"><div class="responsible-card glass reveal-up"><div><p class="section-kicker">Responsible Gaming</p><h2 id="responsible-title">The experience should respect the game and the player.</h2><p>Final production should include visible responsible-gaming resources, jurisdiction-appropriate language, and a clean help path without killing the premium feel.</p></div><a class="button button--ghost" href="https://www.ncpgambling.org/" target="_blank" rel="noreferrer">NCPG Resource</a></div></section>
   </main>
 
-  <footer class="site-footer"><div><strong>Daniel Negreanu · Kid Poker Experience</strong><p>Universal hero structure with local project assets and a Messi-inspired body architecture.</p></div><div class="footer-links"><a href="#top">Top</a><a href="#winner">Winner %</a><a href="#trophies">Trophies</a><a href="#contact">Next</a></div></footer>
+  <footer class="site-footer"><div><strong>Daniel Negreanu · Kid Poker Experience</strong><p>Universal hero structure with local project assets and a Messi-inspired body architecture.</p></div><div class="footer-links"><a href="#top">Top</a><a href="#stats">Stats</a><a href="#gallery">Gallery</a><a href="#contact">Next</a></div></footer>
   <dialog class="modal" data-modal><button class="modal-close" type="button" data-modal-close aria-label="Close modal">×</button><div class="modal-content"><p class="eyebrow">Trophy Detail</p><h2 data-modal-title>Trophy title</h2><p data-modal-body>Trophy body</p><div class="modal-payout" data-modal-payout>$0</div></div></dialog>
+  <div class="gallery-lightbox" data-gallery-lightbox aria-hidden="true"><button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Close gallery image">×</button><figure><img data-gallery-lightbox-img alt=""><figcaption><strong data-gallery-lightbox-title></strong><span data-gallery-lightbox-context></span></figcaption></figure></div>
   <div class="video-lightbox" data-video-lightbox aria-hidden="true"><button class="lightbox-close" type="button" data-lightbox-close aria-label="Close video preview">×</button><div class="video-shell"><div class="video-placeholder"><span>▶</span><h3 data-lightbox-title>Video title</h3><p>Production build will load the selected YouTube, podcast, or short-form clip through a secure cached media endpoint.</p></div></div></div>
   <script src="./script.js"></script>
   <script src="./wow.js"></script>
+  <script src="./build-out.js"></script>
 </body>
 </html>
