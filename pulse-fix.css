@@ -1,25 +1,5 @@
-/* Career Pulse stabilization + black/gold quick links */
+/* Remove redundant hero sub-sections now handled by sticky nav */
 .universal-hero{background:#050509!important;overflow:hidden!important}
-.hero-review-box{position:relative;background:linear-gradient(180deg,#050509,#08070c)!important;color:#f8f1e7!important;border-top:1px solid rgba(244,199,107,.22)!important;border-bottom:1px solid rgba(244,199,107,.18)!important;overflow:hidden!important;transform:translateZ(0);backface-visibility:hidden;contain:paint}
-.hero-review-box:before{content:'';position:absolute;inset:-40% -10%;background:radial-gradient(circle at 28% 40%,rgba(244,199,107,.12),transparent 24rem),radial-gradient(circle at 72% 35%,rgba(15,107,77,.08),transparent 22rem);pointer-events:none}
-.review-layout{position:relative;z-index:2;min-height:118px;gap:1.25rem}
-.review-header h3{font-family:var(--display);font-size:clamp(1.7rem,3vw,3rem)!important;line-height:.9;letter-spacing:-.035em!important;color:var(--gold)!important;text-shadow:0 0 30px rgba(244,199,107,.2)}
-.review-slider-container{overflow:hidden!important;padding:0 54px!important;min-height:96px;display:flex;align-items:center;isolation:isolate}
-.reviewSwiper{position:relative;width:100%;min-height:96px;overflow:hidden!important;transform:translateZ(0);backface-visibility:hidden}
-.reviewSwiper .swiper-wrapper{align-items:center;min-height:96px;will-change:transform}
-.reviewSwiper .swiper-slide{display:flex!important;align-items:center;min-height:96px;opacity:1!important;backface-visibility:hidden;transform:translateZ(0)}
-.review-quote{max-width:900px;margin:0!important;color:#f4efe7!important;font-size:clamp(1rem,1.55vw,1.25rem)!important;line-height:1.5!important;text-wrap:balance}
-.review-source{color:var(--gold)!important;letter-spacing:.04em;text-transform:uppercase}
-.reviewSwiper .swiper-button-next,.reviewSwiper .swiper-button-prev{width:34px!important;height:34px!important;margin-top:0!important;top:50%!important;translate:0 -50%;border:1px solid rgba(244,199,107,.28);border-radius:999px;background:rgba(255,255,255,.055);color:var(--gold)!important;transform:none!important;transition:background .2s ease,color .2s ease,border-color .2s ease}
-.reviewSwiper .swiper-button-prev{left:4px!important}.reviewSwiper .swiper-button-next{right:4px!important}
-.reviewSwiper .swiper-button-next:after,.reviewSwiper .swiper-button-prev:after{font-size:14px!important;font-weight:900!important}
-.reviewSwiper .swiper-button-next:hover,.reviewSwiper .swiper-button-prev:hover{background:linear-gradient(135deg,var(--gold),#fff0b7);color:#15100a!important;border-color:transparent}
-.hero-quick-links{background:#050509!important;padding:2.25rem 5% 2.65rem!important;border-bottom:1px solid rgba(244,199,107,.16)!important}
-.quick-links-grid{gap:.85rem!important}
-.quick-link-item{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035))!important;color:#f8f1e7!important;border:1px solid rgba(244,199,107,.24)!important;border-radius:999px!important;box-shadow:0 18px 48px rgba(0,0,0,.22)!important;text-transform:uppercase;letter-spacing:.075em;font-size:.84rem;font-weight:950!important;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease,color .25s ease!important}
-.quick-link-item:before{content:'';position:absolute;inset:-60% -40%;background:linear-gradient(120deg,transparent 42%,rgba(255,255,255,.38),transparent 58%);translate:-70% 0;transition:translate .5s cubic-bezier(.23,1,.32,1);pointer-events:none}
-.quick-link-item:hover{background:linear-gradient(135deg,var(--gold),#fff0b7)!important;color:#15100a!important;transform:translateY(-4px)!important;border-color:transparent!important;box-shadow:0 20px 56px rgba(244,199,107,.18)!important}
-.quick-link-item:hover:before{translate:70% 0}
-.messi-next{margin-top:0!important;border-top:1px solid rgba(244,199,107,.14)}
-@media (max-width:768px){.review-layout{min-height:auto}.review-slider-container{padding:0 42px!important}.review-header{margin-bottom:.35rem!important}.review-header h3{text-align:center}.reviewSwiper,.reviewSwiper .swiper-wrapper,.reviewSwiper .swiper-slide{min-height:132px}.quick-link-item{border-radius:22px!important}}
-@media (prefers-reduced-motion:reduce){.reviewSwiper .swiper-wrapper{transform:none!important}.quick-link-item,.reviewSwiper .swiper-button-next,.reviewSwiper .swiper-button-prev{transition:none!important}}
+.hero-review-box,
+.hero-quick-links{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;max-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important;pointer-events:none!important}
+.messi-next{margin-top:0!important;border-top:1px solid rgba(244,199,107,.14)!important}
