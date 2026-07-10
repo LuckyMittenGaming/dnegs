@@ -5,6 +5,15 @@
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
+  function initPulseFixStyles() {
+    if (document.querySelector('link[data-pulse-fix]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = './pulse-fix.css?v=2';
+    link.setAttribute('data-pulse-fix', 'true');
+    document.head.appendChild(link);
+  }
+
   function initPreloader() {
     const preloader = $('[data-preloader]');
     const loadBar = $('[data-load-bar]');
@@ -235,6 +244,7 @@
   }
 
   function init() {
+    initPulseFixStyles();
     initPreloader();
     initHeader();
     initCursorLight();
