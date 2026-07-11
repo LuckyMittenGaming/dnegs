@@ -15,8 +15,8 @@
   };
 
   const galleryItems = [
-    ['https://pokerdb.thehendonmob.com/pictures/200/Daniel%20Negreanu%20Profile%20Picture.jpg','https://pokerdb.thehendonmob.com/pictures/Daniel%20Negreanu%20Profile%20Picture.jpg','Daniel Negreanu','Profile image from the Hendon Mob gallery archive.'],
-    ['https://pokerdb.thehendonmob.com/pictures/200/revpix170223APAwards8923.JPG','https://pokerdb.thehendonmob.com/pictures/revpix170223APAwards8923.JPG','Awards Night','A gallery-wall moment for recognition, media, and personality.'],
+    ['https://pokerdb.thehendonmob.com/pictures/200/Daniel%20Negreanu%20Profile%20Picture.jpg','https://pokerdb.thehendonmob.com/pictures/Daniel%20Negreanu%20Profile%20Picture.jpg','Daniel Negreanu','A marquee profile portrait for the archive wall.'],
+    ['https://pokerdb.thehendonmob.com/pictures/200/revpix170223APAwards8923.JPG','https://pokerdb.thehendonmob.com/pictures/revpix170223APAwards8923.JPG','Awards Night','A recognition-night moment with media, personality, and ceremony.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/Daniel%20Negreanu%202.jpg','https://pokerdb.thehendonmob.com/pictures/Daniel%20Negreanu%202.jpg','Kid Poker Portrait','A legacy portrait slot ready for richer caption context.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/NEIL1778_EPT10BAR_Daniel_Negreanu_Neil%20Stoddart.jpg','https://pokerdb.thehendonmob.com/pictures/NEIL1778_EPT10BAR_Daniel_Negreanu_Neil%20Stoddart.jpg','2013 EPT Barcelona','European Poker Tour Barcelona archive image.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/8G2A7207_EPT9MON_Daniel_Negreanu_Neil%20Stoddart.jpg','https://pokerdb.thehendonmob.com/pictures/8G2A7207_EPT9MON_Daniel_Negreanu_Neil%20Stoddart.jpg','2013 EPT Grand Final','Monte Carlo era gallery image.'],
@@ -26,7 +26,7 @@
     ['https://pokerdb.thehendonmob.com/pictures/200/Daniel%20Negreanu%2010%20000%20NLHE%20Championship.jpg','https://pokerdb.thehendonmob.com/pictures/Daniel%20Negreanu%2010%20000%20NLHE%20Championship.jpg','$10K NLH Championship','WSOP 2010 championship archive image.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/daniel%20negreanu.jpg','https://pokerdb.thehendonmob.com/pictures/daniel%20negreanu.jpg','WSOP 2012 Event #50','No Limit Hold’em event gallery image.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/Daniel%20Negreanu%20WSOP%202011%203000%20PLO.jpg','https://pokerdb.thehendonmob.com/pictures/Daniel%20Negreanu%20WSOP%202011%203000%20PLO.jpg','WSOP 2011 PLO','Pot Limit Omaha archive image.'],
-    ['https://pokerdb.thehendonmob.com/pictures/200/_MG_5364_Daniel_Negreanu_EPT7PCA_Neil_Stoddart.jpg','https://pokerdb.thehendonmob.com/pictures/_MG_5364_Daniel_Negreanu_EPT7PCA_Neil_Stoddart.jpg','2011 PCA Super High Roller','High roller era image from the archive.'],
+    ['https://pokerdb.thehendonmob.com/pictures/200/_MG_5364_Daniel_Negreanu_EPT7PCA_Neil_Stoddart.jpg','https://pokerdb.thehendonmob.com/pictures/_MG_5364_Daniel_Negreanu_EPT7PCA_Neil_Stoddart.jpg','2011 PCA Super High Roller','High roller era image.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/daniel_negreanu_day22_appt_sydney.jpg','https://pokerdb.thehendonmob.com/pictures/daniel_negreanu_day22_appt_sydney.jpg','2010 APPT Sydney','Asia Pacific Poker Tour Sydney gallery image.'],
     ['https://pokerdb.thehendonmob.com/pictures/200/Day%204%20Daniel_Negreanu_EPT7VIE_Neil_Stoddart.jpg','https://pokerdb.thehendonmob.com/pictures/Day%204%20Daniel_Negreanu_EPT7VIE_Neil_Stoddart.jpg','EPT Vienna Chip Leader','Final-table energy and tournament pressure.']
   ];
@@ -107,7 +107,8 @@
   }
 
   function videoCard(videoId, title, note = '') {
-    return `<article class="youtube-card"><div class="youtube-embed"><iframe src="https://www.youtube.com/embed/${videoId}" title="${title.replace(/"/g, '&quot;')}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><h3>${title}</h3><p>${note || 'Daniel Negreanu YouTube upload'}</p></article>`;
+    const safeTitle = title.replace(/"/g, '&quot;');
+    return `<a class="youtube-card" href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noreferrer"><div class="youtube-thumb"><img src="https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg" alt="${safeTitle}" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${videoId}/hqdefault.jpg';"><span class="youtube-play" aria-hidden="true"></span></div><h3>${title}</h3><p>${note || 'Daniel Negreanu YouTube upload'}</p></a>`;
   }
 
   function initYouTubeFeed() {
@@ -115,9 +116,9 @@
     if (!container) return;
     const fallback = () => {
       container.innerHTML = [
-        videoCard('mqSmE75E5vY', 'WSOP Vlog — Day 44', 'Manual fallback video'),
-        videoCard('apWXs5sw4aI', 'WSOP Vlog — Day 43', 'Manual fallback video'),
-        videoCard('kq1caOO9B-Q', 'WSOP Vlog — Day 42', 'Manual fallback video')
+        videoCard('mqSmE75E5vY', 'WILD MAIN EVENT DAY 2! - 2026 WSOP VLOG Day 44', 'Manual fallback video'),
+        videoCard('apWXs5sw4aI', 'The WSOP POY CONTROVERSY Explained - 2026 WSOP VLOG Day 43', 'Manual fallback video'),
+        videoCard('kq1caOO9B-Q', 'WSOP VLOG Day 42', 'Manual fallback video')
       ].join('');
     };
     const channelId = 'UC0w4AA42ItXQEb9aZld87-w';
@@ -136,11 +137,38 @@
       .catch(fallback);
   }
 
+  function initNegreanuNews() {
+    const container = $('#negreanu-news');
+    if (!container) return;
+    const rssUrl = 'https://www.pokernews.com/rss.php';
+    const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+    fetch(proxyUrl)
+      .then((res) => res.ok ? res.json() : Promise.reject(new Error('news failed')))
+      .then((data) => {
+        const keyword = /daniel negreanu|negreanu/i;
+        const filtered = (data.items || []).filter((item) => {
+          const inTitle = item.title && keyword.test(item.title);
+          const inDesc = item.description && keyword.test(item.description);
+          const inCat = item.categories && item.categories.some((cat) => keyword.test(cat));
+          return inTitle || inDesc || inCat;
+        }).slice(0, 8);
+        if (!filtered.length) {
+          container.innerHTML = '<p>No recent Daniel Negreanu stories found in the feed.</p>';
+          return;
+        }
+        container.innerHTML = `<ul>${filtered.map((item) => `<li><a href="${item.link}" target="_blank" rel="noreferrer">${item.title}</a>${item.pubDate ? `<small>${new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</small>` : ''}</li>`).join('')}</ul>`;
+      })
+      .catch(() => {
+        container.innerHTML = '<p>News could not be loaded at the moment.</p>';
+      });
+  }
+
   function init() {
     initStats();
     initVault();
     initGallery();
     initYouTubeFeed();
+    initNegreanuNews();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
