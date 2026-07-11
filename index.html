@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="./wow.css" />
   <link rel="stylesheet" href="./hero-overrides.css" />
   <link rel="stylesheet" href="./build-out.css" />
+  <link rel="stylesheet" href="./experience-loader.css" />
 </head>
-<body>
+<body class="experience-loading">
   <div class="load-curtain" aria-hidden="true">
     <span class="curtain-word">KID POKER</span>
     <img class="curtain-signature" src="/assets/signatures/Make%20(1920%20x%201920%20px).svg" alt="" />
@@ -27,7 +28,7 @@
 
   <div class="preloader" data-preloader aria-live="polite" aria-label="Loading the Kid Poker Experience">
     <div class="preloader__ring" aria-hidden="true"><span>DN</span><i></i></div>
-    <p>Reading the room</p>
+    <p data-loader-status>Reading the room</p>
     <div class="load-track"><span data-load-bar></span></div>
   </div>
 
@@ -115,7 +116,7 @@
         <article class="social-card social-card-x"><h3>X / RealKidPoker</h3><a class="twitter-timeline" data-height="560" data-theme="dark" href="https://x.com/RealKidPoker?ref_src=twsrc%5Etfw">Posts by RealKidPoker</a></article>
         <article class="social-card social-card-ig"><h3>Instagram / dnegspoker</h3><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/dnegspoker/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/dnegspoker/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noreferrer">View Daniel Negreanu on Instagram</a></blockquote></article>
         <article class="social-card social-card-news"><h3>Daniel Negreanu Poker News</h3><div id="negreanu-news"><p>Loading Daniel Negreanu headlines…</p></div></article>
-        <article class="social-card social-card-facebook"><h3>Recent Facebook Posts</h3><div class="facebook-posts"><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDNegsPoker%2Fposts%2Fpfbid0yDipEZxGm61BXWYQivH8PrKvur7skBQad2dabybsV4FBvQGD1KwYXV5byhDfQQccl&show_text=true&width=500" width="500" height="525" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDNegsPoker%2Fposts%2Fpfbid025KzwVFxGETFPA1a98nrttkRySoQp2SvX1ALZT8nC8cNbdVpKS5ph86QCvdRXQsLvl&show_text=true&width=500" width="500" height="506" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDNegsPoker%2Fposts%2Fpfbid0ViP3fERcycsDb4WaaMXehpAFWcorMzjZGyPnQUaZJphGHa9huTrVMgz8pA4vGc7il&show_text=true&width=500" width="500" height="525" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div></article>
+        <article class="social-card social-card-facebook"><h3>Recent Facebook Posts</h3><div class="facebook-posts"><iframe data-defer-src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDNegsPoker%2Fposts%2Fpfbid0yDipEZxGm61BXWYQivH8PrKvur7skBQad2dabybsV4FBvQGD1KwYXV5byhDfQQccl&show_text=true&width=500" width="500" height="525" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe><iframe data-defer-src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDNegsPoker%2Fposts%2Fpfbid025KzwVFxGETFPA1a98nrttkRySoQp2SvX1ALZT8nC8cNbdVpKS5ph86QCvdRXQsLvl&show_text=true&width=500" width="500" height="506" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe><iframe data-defer-src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDNegsPoker%2Fposts%2Fpfbid0ViP3fERcycsDb4WaaMXehpAFWcorMzjZGyPnQUaZJphGHa9huTrVMgz8pA4vGc7il&show_text=true&width=500" width="500" height="525" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe></div></article>
       </div>
     </section>
 
@@ -126,8 +127,7 @@
   <dialog class="modal" data-modal><button class="modal-close" type="button" data-modal-close aria-label="Close modal">×</button><div class="modal-content"><p class="eyebrow">Trophy Detail</p><h2 data-modal-title>Trophy title</h2><p data-modal-body>Trophy body</p><div class="modal-payout" data-modal-payout>$0</div></div></dialog>
   <div class="gallery-lightbox" data-gallery-lightbox aria-hidden="true"><button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Close gallery image">×</button><figure><img data-gallery-lightbox-img alt=""><figcaption><strong data-gallery-lightbox-title></strong><span data-gallery-lightbox-context></span></figcaption></figure></div>
   <div class="video-lightbox" data-video-lightbox aria-hidden="true"><button class="lightbox-close" type="button" data-lightbox-close aria-label="Close video preview">×</button><div class="video-shell"><div class="video-placeholder"><span>▶</span><h3 data-lightbox-title>Video title</h3><p>Production build will load the selected YouTube, podcast, or short-form clip through a secure cached media endpoint.</p></div></div></div>
-  <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-  <script async src="https://www.instagram.com/embed.js"></script>
+  <script src="./experience-loader.js"></script>
   <script src="./script.js"></script>
   <script src="./wow.js"></script>
   <script src="./build-out.js"></script>
