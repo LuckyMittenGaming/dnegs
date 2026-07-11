@@ -3,8 +3,8 @@
 
   const MIN_DN_MS = 1850;
   const MAX_WAIT_MS = 4800;
-  const CURTAIN_HOLD_MS = 980;
-  const CURTAIN_RAISE_MS = 1020;
+  const CURTAIN_HOLD_MS = 1850;
+  const CURTAIN_RAISE_MS = 1250;
   const signaturePath = '/assets/signatures/Make%20(1920%20x%201920%20px).svg';
   const criticalImages = ['/assets/hero/hero-4.png', signaturePath, '/assets/trophies/bracelet-vault-door.png'];
   const criticalVideos = ['/assets/story/toronto-family.mp4'];
@@ -107,14 +107,16 @@
 
   async function runExperience() {
     const body = document.body;
+    const preloader = $('[data-preloader]');
     body.classList.add('experience-controlled', 'experience-loading');
     setProgress(6, 'Reading the room');
 
     await preloadCriticalAssets();
 
     body.classList.add('experience-phase-curtain');
-    $('[data-preloader]')?.setAttribute('aria-hidden', 'true');
-    await wait(420);
+    preloader?.classList.add('is-hidden');
+    preloader?.setAttribute('aria-hidden', 'true');
+    await wait(520);
 
     warmVideoElements();
     await wait(CURTAIN_HOLD_MS);
