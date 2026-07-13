@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+
   const $ = (selector, scope = document) => scope.querySelector(selector);
 
   const statYears = {
@@ -30,6 +31,17 @@
     ['https://pokerdb.thehendonmob.com/pictures/200/Day%204%20Daniel_Negreanu_EPT7VIE_Neil_Stoddart.jpg','https://pokerdb.thehendonmob.com/pictures/Day%204%20Daniel_Negreanu_EPT7VIE_Neil_Stoddart.jpg','EPT Vienna Chip Leader','Final-table energy and tournament pressure.']
   ];
 
+  const bracelets = [
+    ['I','Bracelet 1','Bracelet I|The breakthrough slot: youthful, fearless, and impossible to ignore.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+1'],
+    ['II','Bracelet 2','Bracelet II|A second proof point that Kid Poker was not a moment — he was a force.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+2'],
+    ['III','Bracelet 3','Bracelet III|Mixed games, adaptation, and the all-around poker brain.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+3'],
+    ['IV','Bracelet 4','Bracelet IV|The trophy room should show the eras, not just the counts.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+4'],
+    ['V','Bracelet 5','Bracelet V|A premium card can later hold real footage, payout, final hand, and media notes.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+5'],
+    ['VI','Bracelet 6','Bracelet VI|Every bracelet slot is built for verified data once final assets are supplied.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+6'],
+    ['VII','Bracelet 7','Bracelet VII|The late-career chapters should feel like reinvention, not nostalgia.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+7'],
+    ['VIII','Bracelet 8','Bracelet VIII|Modern Daniel: still dangerous, still relevant, still shaping the conversation.|WSOP','https://placehold.co/520x360/050403/f4c76b?text=Bracelet+8']
+  ];
+
   function injectPolishStyles() {
     if ($('#final-polish-styles')) return;
     const style = document.createElement('style');
@@ -44,18 +56,19 @@
       .below-hero-bracelet-band img{display:block;width:100%;height:auto;min-height:clamp(180px,27vw,520px);object-fit:cover;object-position:center center;filter:saturate(1.06) contrast(1.04)}
       .vault-wheel{display:none!important}.vault-door{gap:.65rem!important}.vault-door strong{margin-top:0!important}
       .vault-interior{padding:clamp(1rem,2.4vw,2.4rem)!important;background:radial-gradient(circle at 50% 12%,rgba(255,219,132,.16),transparent 18rem),linear-gradient(180deg,#14100b,#060504 58%,#050403)!important;box-shadow:inset 0 0 115px rgba(0,0,0,.92),inset 0 0 0 1px rgba(244,199,107,.18)!important}
-      .vault-section .trophy-grid-eight{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(.7rem,1.35vw,1.25rem)!important;min-height:100%;align-content:center!important;padding:clamp(.55rem,1.2vw,1rem)!important;background:linear-gradient(180deg,rgba(255,235,177,.05),rgba(0,0,0,.22));border-radius:28px;border:1px solid rgba(244,199,107,.18);box-shadow:inset 0 0 0 8px rgba(0,0,0,.16)}
-      .vault-section .trophy-card{min-height:clamp(180px,18vw,248px)!important;aspect-ratio:1.1/.92!important;border-radius:24px!important;padding:clamp(1rem,1.5vw,1.4rem)!important;align-content:end!important;background:radial-gradient(circle at 50% 28%,rgba(255,233,164,.20),transparent 35%),linear-gradient(180deg,#312616,#090705 67%,#040303)!important;border:1px solid rgba(255,216,130,.38)!important;box-shadow:0 0 0 10px rgba(10,7,5,.68),0 0 0 11px rgba(244,199,107,.22),inset 0 0 60px rgba(0,0,0,.62),0 22px 48px rgba(0,0,0,.58)!important}
-      .vault-section .trophy-card:before{inset:-13px!important;border-radius:32px!important;border:2px solid rgba(216,163,73,.5)!important;background:linear-gradient(135deg,rgba(255,241,190,.1),rgba(0,0,0,.08));box-shadow:inset 0 0 36px rgba(0,0,0,.8);z-index:-1}
-      .vault-section .bracelet{margin:0 auto auto!important;filter:drop-shadow(0 16px 24px rgba(0,0,0,.55))}.vault-section .trophy-card strong{font-size:clamp(1.05rem,1.4vw,1.35rem)!important}.vault-section .trophy-card small{font-size:.9rem!important}
+      .vault-section .trophy-grid-eight{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(1rem,2vw,1.5rem)!important;min-height:100%;align-content:center!important;padding:clamp(1rem,2vw,1.5rem)!important;background:linear-gradient(180deg,rgba(255,235,177,.05),rgba(0,0,0,.22));border-radius:28px;border:1px solid rgba(244,199,107,.18);box-shadow:inset 0 0 0 8px rgba(0,0,0,.16)}
+      .cubby{position:relative;min-height:clamp(180px,18vw,248px)!important;aspect-ratio:1.1/.92!important;perspective:1200px;display:flex;justify-content:center;align-items:center}
+      .bracelet-box{width:90%;height:85%;position:relative;cursor:pointer;transform-style:preserve-3d;border-radius:12px;box-shadow:0 15px 30px rgba(0,0,0,.8)}
+      .box-lid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.5rem;border-radius:12px;border:1px solid rgba(255,216,130,.38);color:#f9edd3;background:radial-gradient(circle at 50% 28%,rgba(255,233,164,.20),transparent 35%),linear-gradient(180deg,#312616,#090705 67%,#040303);box-shadow:inset 0 0 40px rgba(0,0,0,.62);transform-origin:top;transition:transform .6s cubic-bezier(.4,0,.2,1);z-index:2;backface-visibility:hidden}
+      .box-lid strong{font-size:clamp(1.05rem,1.4vw,1.35rem);color:#fff4c5}.box-lid .bracelet{display:grid;place-items:center;width:clamp(50px,6vw,70px);height:clamp(50px,6vw,70px);border-radius:999px;color:#2d1907;font-weight:950;font-size:clamp(1rem,1.5vw,1.5rem);background:radial-gradient(circle,#fff0b7 0 12%,#c99135 45%,#6d4315 70%),#d3a049;box-shadow:0 0 0 6px rgba(245,200,95,.3)}
+      .box-interior{position:absolute;inset:0;background:radial-gradient(circle,#1a1a1a,#000);border-radius:12px;border:1px solid #333;display:flex;justify-content:center;align-items:center;z-index:1;overflow:hidden;box-shadow:inset 0 0 20px rgba(0,0,0,.9)}
+      .box-interior img{max-width:85%;max-height:85%;object-fit:contain;cursor:zoom-in;transition:transform .3s ease;filter:drop-shadow(0 10px 15px rgba(0,0,0,.8))}.box-interior img:hover{transform:scale(1.1)}.bracelet-box.is-open .box-lid{transform:rotateX(115deg)}
       @media (max-width:900px){.vault-section .trophy-grid-eight{grid-template-columns:repeat(2,minmax(0,1fr))!important}.vault-stage,.vault-interior{min-height:900px!important}}
       .gallery-wall{background:radial-gradient(circle at 30% 8%,rgba(244,199,107,.13),transparent 20rem),linear-gradient(180deg,rgba(31,20,12,.96),rgba(8,5,4,.98)),repeating-linear-gradient(90deg,#21150d 0 150px,#170f0a 150px 300px)!important;box-shadow:inset 0 0 120px rgba(0,0,0,.72)!important}
       .photo-wall{background:radial-gradient(circle at 48% 0,rgba(255,220,141,.08),transparent 18rem),linear-gradient(180deg,rgba(43,27,16,.82),rgba(14,8,5,.94)),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 72px)!important;border:1px solid rgba(244,199,107,.2)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),inset 0 0 80px rgba(0,0,0,.72),0 30px 90px rgba(0,0,0,.45)!important}
-      .gallery-card{padding:5px!important;border-radius:18px!important;background:linear-gradient(135deg,#fff1b8,#d6a447 34%,#6f4518 68%,#ffe7a0)!important;box-shadow:0 22px 52px rgba(0,0,0,.48),inset 0 0 0 1px rgba(255,255,255,.24)!important}
-      .gallery-card:before{content:'';position:absolute;inset:5px;border-radius:13px;border:1px solid rgba(255,244,204,.65);pointer-events:none;z-index:3}.gallery-card img{border-radius:12px!important}.gallery-card span{left:5px!important;right:5px!important;bottom:5px!important;border-radius:0 0 12px 12px!important}
+      .gallery-card{padding:5px!important;border-radius:18px!important;background:linear-gradient(135deg,#fff1b8,#d6a447 34%,#6f4518 68%,#ffe7a0)!important;box-shadow:0 22px 52px rgba(0,0,0,.48),inset 0 0 0 1px rgba(255,255,255,.24)!important}.gallery-card:before{content:'';position:absolute;inset:5px;border-radius:13px;border:1px solid rgba(255,244,204,.65);pointer-events:none;z-index:3}.gallery-card img{border-radius:12px!important}.gallery-card span{left:5px!important;right:5px!important;bottom:5px!important;border-radius:0 0 12px 12px!important}
       .social-wall{align-items:start!important}.social-card{min-width:0;overflow:hidden}.social-card-ig .instagram-media{max-width:100%!important;min-width:0!important;width:100%!important;margin:0 auto!important;border-radius:18px!important;overflow:hidden}.social-card-x iframe{width:100%!important}.social-fallback{display:grid;gap:.75rem;margin-top:1rem;padding:1rem;border-radius:18px;background:rgba(244,199,107,.08);border:1px solid rgba(244,199,107,.18);color:#f8efd9}.social-fallback a,.news-fallback a{color:#ffe59b;font-weight:900;text-decoration:none}.news-fallback{display:grid;gap:.75rem}.news-fallback li{list-style:none;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.09)}
-      .facebook-posts{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1rem!important;align-items:start!important}.facebook-posts iframe{width:100%!important;height:520px!important;max-width:100%!important;border-radius:18px!important;background:#fff!important}.social-card-facebook{grid-column:1/-1!important}.social-card-facebook h3{margin-bottom:1rem!important}
-      @media (max-width:1050px){.facebook-posts{grid-template-columns:1fr!important}.facebook-posts iframe{height:540px!important}}
+      .facebook-posts{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1rem!important;align-items:start!important}.facebook-posts iframe{width:100%!important;height:520px!important;max-width:100%!important;border-radius:18px!important;background:#fff!important}.social-card-facebook{grid-column:1/-1!important}.social-card-facebook h3{margin-bottom:1rem!important}@media (max-width:1050px){.facebook-posts{grid-template-columns:1fr!important}.facebook-posts iframe{height:540px!important}}
     `;
     document.head.appendChild(style);
   }
@@ -66,15 +79,57 @@
     next.insertAdjacentHTML('afterend', '<section class="below-hero-bracelet-band" aria-label="Daniel Negreanu bracelet celebration"><img src="/assets/icons/below-hero-bracelet-congrats.png" alt="Daniel Negreanu bracelet celebration graphic" loading="eager" decoding="async"></section>');
   }
 
-  function loadScript(id, src, cb) {
-    const existing = document.getElementById(id);
-    if (existing) { cb?.(); return; }
-    const script = document.createElement('script');
-    script.id = id;
-    script.async = true;
-    script.src = src;
-    script.onload = () => cb?.();
-    document.body.appendChild(script);
+  function renderVaultInterior() {
+    const grid = $('[data-trophy-grid]');
+    if (!grid || grid.dataset.vaultInterior === 'box-lids') return;
+    grid.dataset.vaultInterior = 'box-lids';
+    grid.innerHTML = bracelets.map(([roman, title, trophy, image]) => `
+      <div class="cubby">
+        <div class="bracelet-box" data-trophy="${trophy.replace(/"/g, '&quot;')}" tabindex="0" role="button" aria-label="Open ${title}">
+          <div class="box-lid"><span class="bracelet">${roman}</span><strong>${title}</strong></div>
+          <div class="box-interior"><img src="${image}" alt="${title}" loading="lazy"></div>
+        </div>
+      </div>`).join('');
+  }
+
+  function openTrophyModal(box) {
+    const modal = $('[data-modal]');
+    if (!modal) return;
+    const [headline, copy, prize] = (box.dataset.trophy || '').split('|');
+    const title = $('[data-modal-title]');
+    const body = $('[data-modal-body]');
+    const payout = $('[data-modal-payout]');
+    if (title) title.textContent = headline || 'Trophy detail';
+    if (body) body.textContent = copy || '';
+    if (payout) payout.textContent = prize || '';
+    document.body.classList.add('modal-open');
+    if (typeof modal.showModal === 'function' && !modal.open) modal.showModal();
+    else modal.setAttribute('open', '');
+  }
+
+  function initVault() {
+    const vault = $('[data-vault]');
+    const button = $('[data-vault-door]');
+    if (!vault) return;
+    button?.addEventListener('click', () => {
+      vault.classList.add('is-open');
+      button.setAttribute('aria-expanded', 'true');
+    });
+    renderVaultInterior();
+    vault.addEventListener('click', (event) => {
+      const box = event.target.closest('.bracelet-box');
+      if (!box) return;
+      const isOpen = box.classList.contains('is-open');
+      if (isOpen && event.target.tagName === 'IMG') openTrophyModal(box);
+      else box.classList.toggle('is-open');
+    });
+    vault.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const box = event.target.closest('.bracelet-box');
+      if (!box) return;
+      event.preventDefault();
+      box.classList.toggle('is-open');
+    });
   }
 
   function initStats() {
@@ -94,26 +149,12 @@
       kicker.textContent = mode === 'regions' ? 'Regional Earnings' : selected.kicker;
       const max = Math.max(...selected.bars.map(([,v]) => v));
       bars.innerHTML = selected.bars.map(([label, value]) => `<div class="stat-bar"><i style="height:${Math.max(6, (value / max) * 100)}%"></i><span>${label}</span></div>`).join('');
-      const items = mode === 'rankings'
-        ? [['All-Time Money List','9th'], ['Canada All-Time','1st'], ['Popularity Ranking','1st'], ['Best Live Cash','$8.288M']]
-        : mode === 'regions'
-          ? [['Americas','$56.1M+'], ['Europe','$6.2M+'], ['Oceania','$2.75M+'], ['Rest of World','$867K+']]
-          : selected.feed;
+      const items = mode === 'rankings' ? [['All-Time Money List','9th'], ['Canada All-Time','1st'], ['Popularity Ranking','1st'], ['Best Live Cash','$8.288M']] : mode === 'regions' ? [['Americas','$56.1M+'], ['Europe','$6.2M+'], ['Oceania','$2.75M+'], ['Rest of World','$867K+']] : selected.feed;
       feed.innerHTML = items.map(([a,b]) => `<article><strong>${a}</strong><span>${b}</span></article>`).join('');
     };
     year.addEventListener('change', update);
     view?.addEventListener('change', update);
     update();
-  }
-
-  function initVault() {
-    const vault = $('[data-vault]');
-    const button = $('[data-vault-door]');
-    if (!vault || !button) return;
-    button.addEventListener('click', () => {
-      vault.classList.add('is-open');
-      button.setAttribute('aria-expanded', 'true');
-    });
   }
 
   function initGallery() {
@@ -161,26 +202,19 @@
     const container = $('#dnegs-latest-videos');
     if (!container) return;
     const fallback = () => {
-      container.innerHTML = [
-        videoCard('mqSmE75E5vY', 'WILD MAIN EVENT DAY 2! - 2026 WSOP VLOG Day 44', 'Manual fallback video'),
-        videoCard('apWXs5sw4aI', 'The WSOP POY CONTROVERSY Explained - 2026 WSOP VLOG Day 43', 'Manual fallback video'),
-        videoCard('kq1caOO9B-Q', 'WSOP VLOG Day 42', 'Manual fallback video')
-      ].join('');
+      container.innerHTML = [videoCard('mqSmE75E5vY', 'WILD MAIN EVENT DAY 2! - 2026 WSOP VLOG Day 44', 'Manual fallback video'), videoCard('apWXs5sw4aI', 'The WSOP POY CONTROVERSY Explained - 2026 WSOP VLOG Day 43', 'Manual fallback video'), videoCard('kq1caOO9B-Q', 'WSOP VLOG Day 42', 'Manual fallback video')].join('');
     };
     const channelId = 'UC0w4AA42ItXQEb9aZld87-w';
     const rssUrl = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
-    fetch(apiUrl)
-      .then((res) => res.ok ? res.json() : Promise.reject(new Error('feed failed')))
-      .then((data) => {
-        const videos = (data.items || []).slice(0, 3);
-        if (!videos.length) return fallback();
-        container.innerHTML = videos.map((video) => {
-          const videoId = (video.link.split('v=')[1] || '').split('&')[0] || (video.guid || '').split(':').pop();
-          return videoCard(videoId, video.title, new Date(video.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
-        }).join('');
-      })
-      .catch(fallback);
+    fetch(apiUrl).then((res) => res.ok ? res.json() : Promise.reject(new Error('feed failed'))).then((data) => {
+      const videos = (data.items || []).slice(0, 3);
+      if (!videos.length) return fallback();
+      container.innerHTML = videos.map((video) => {
+        const videoId = (video.link.split('v=')[1] || '').split('&')[0] || (video.guid || '').split(':').pop();
+        return videoCard(videoId, video.title, new Date(video.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+      }).join('');
+    }).catch(fallback);
   }
 
   function newsFallback(container) {
@@ -192,20 +226,28 @@
     if (!container) return;
     const rssUrl = 'https://www.pokernews.com/rss.php';
     const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-    fetch(proxyUrl)
-      .then((res) => res.ok ? res.json() : Promise.reject(new Error('news failed')))
-      .then((data) => {
-        const keyword = /daniel negreanu|negreanu/i;
-        const filtered = (data.items || []).filter((item) => {
-          const inTitle = item.title && keyword.test(item.title);
-          const inDesc = item.description && keyword.test(item.description);
-          const inCat = item.categories && item.categories.some((cat) => keyword.test(cat));
-          return inTitle || inDesc || inCat;
-        }).slice(0, 8);
-        if (!filtered.length) return newsFallback(container);
-        container.innerHTML = `<ul>${filtered.map((item) => `<li><a href="${item.link}" target="_blank" rel="noreferrer">${item.title}</a>${item.pubDate ? `<small>${new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</small>` : ''}</li>`).join('')}</ul>`;
-      })
-      .catch(() => newsFallback(container));
+    fetch(proxyUrl).then((res) => res.ok ? res.json() : Promise.reject(new Error('news failed'))).then((data) => {
+      const keyword = /daniel negreanu|negreanu/i;
+      const filtered = (data.items || []).filter((item) => {
+        const inTitle = item.title && keyword.test(item.title);
+        const inDesc = item.description && keyword.test(item.description);
+        const inCat = item.categories && item.categories.some((cat) => keyword.test(cat));
+        return inTitle || inDesc || inCat;
+      }).slice(0, 8);
+      if (!filtered.length) return newsFallback(container);
+      container.innerHTML = `<ul>${filtered.map((item) => `<li><a href="${item.link}" target="_blank" rel="noreferrer">${item.title}</a>${item.pubDate ? `<small>${new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</small>` : ''}</li>`).join('')}</ul>`;
+    }).catch(() => newsFallback(container));
+  }
+
+  function loadScript(id, src, cb) {
+    const existing = document.getElementById(id);
+    if (existing) { cb?.(); return; }
+    const script = document.createElement('script');
+    script.id = id;
+    script.async = true;
+    script.src = src;
+    script.onload = () => cb?.();
+    document.body.appendChild(script);
   }
 
   function initSocialEmbeds() {
@@ -217,20 +259,14 @@
       xAnchor.dataset.theme = 'dark';
       loadScript('twitter-widgets-script', 'https://platform.twitter.com/widgets.js', () => window.twttr?.widgets?.load?.(xCard || document));
       window.setTimeout(() => {
-        if (xCard && !xCard.querySelector('iframe') && !xCard.querySelector('.social-fallback')) {
-          xCard.insertAdjacentHTML('beforeend', '<div class="social-fallback"><strong>X feed preview may be blocked by browser privacy settings.</strong><a href="https://x.com/RealKidPoker" target="_blank" rel="noreferrer">Open @RealKidPoker on X</a></div>');
-        }
+        if (xCard && !xCard.querySelector('iframe') && !xCard.querySelector('.social-fallback')) xCard.insertAdjacentHTML('beforeend', '<div class="social-fallback"><strong>X feed preview may be blocked by browser privacy settings.</strong><a href="https://x.com/RealKidPoker" target="_blank" rel="noreferrer">Open @RealKidPoker on X</a></div>');
       }, 4200);
     }
-
     const igCard = $('.social-card-ig');
     loadScript('instagram-embed-script', 'https://www.instagram.com/embed.js', () => window.instgrm?.Embeds?.process?.());
     window.setTimeout(() => {
-      if (igCard && !igCard.querySelector('iframe') && !igCard.querySelector('.social-fallback')) {
-        igCard.insertAdjacentHTML('beforeend', '<div class="social-fallback"><strong>Instagram profile embed may be blocked by browser privacy settings.</strong><a href="https://www.instagram.com/dnegspoker/" target="_blank" rel="noreferrer">Open @dnegspoker on Instagram</a></div>');
-      }
+      if (igCard && !igCard.querySelector('iframe') && !igCard.querySelector('.social-fallback')) igCard.insertAdjacentHTML('beforeend', '<div class="social-fallback"><strong>Instagram profile embed may be blocked by browser privacy settings.</strong><a href="https://www.instagram.com/dnegspoker/" target="_blank" rel="noreferrer">Open @dnegspoker on Instagram</a></div>');
     }, 4200);
-
     const hydrateFacebook = () => {
       document.querySelectorAll('.facebook-posts iframe[data-defer-src]').forEach((iframe) => {
         iframe.src = iframe.dataset.deferSrc;
