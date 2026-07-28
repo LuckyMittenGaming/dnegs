@@ -22,31 +22,31 @@
       1: [[50, 15]],
       2: [[35, 16], [65, 16]],
       3: [[27, 23], [50, 14], [73, 23]],
-      4: [[23, 33], [38, 17], [62, 17], [77, 33]],
-      5: [[20, 45], [30, 24], [50, 15], [70, 24], [80, 45]],
-      6: [[18, 50], [29, 25], [43, 16], [57, 16], [71, 25], [82, 50]],
-      7: [[22, 74], [18, 50], [29, 25], [43, 16], [57, 16], [71, 25], [82, 50]],
-      8: [[25, 74], [18, 50], [29, 25], [43, 16], [57, 16], [71, 25], [82, 50], [75, 74]]
+      4: [[23, 32], [38, 16], [62, 16], [77, 32]],
+      5: [[20, 46], [30, 23], [50, 14], [70, 23], [80, 46]],
+      6: [[18, 52], [29, 24], [43, 15], [57, 15], [71, 24], [82, 52]],
+      7: [[22, 75], [18, 52], [29, 24], [43, 15], [57, 15], [71, 24], [82, 52]],
+      8: [[25, 76], [18, 52], [29, 24], [43, 15], [57, 15], [71, 24], [82, 52], [75, 76]]
     },
     narrow: {
-      1: [[50, 14]],
-      2: [[34, 16], [66, 16]],
-      3: [[27, 26], [50, 14], [73, 26]],
-      4: [[20, 40], [36, 20], [64, 20], [80, 40]],
-      5: [[18, 54], [26, 28], [50, 14], [74, 28], [82, 54]],
-      6: [[19, 70], [18, 48], [30, 24], [50, 14], [70, 24], [82, 48]],
-      7: [[22, 74], [18, 52], [28, 28], [42, 16], [58, 16], [72, 28], [82, 52]],
-      8: [[23, 75], [17, 54], [26, 29], [40, 17], [60, 17], [74, 29], [83, 54], [77, 75]]
-    },
-    micro: {
       1: [[50, 13]],
       2: [[34, 15], [66, 15]],
-      3: [[24, 27], [50, 14], [76, 27]],
-      4: [[18, 43], [36, 20], [64, 20], [82, 43]],
-      5: [[18, 58], [24, 31], [50, 15], [76, 31], [82, 58]],
-      6: [[20, 75], [17, 54], [28, 29], [42, 18], [58, 18], [72, 29]],
-      7: [[22, 77], [17, 56], [25, 33], [39, 20], [61, 20], [75, 33], [83, 56]],
-      8: [[22, 77], [17, 56], [24, 34], [38, 20], [62, 20], [76, 34], [83, 56], [78, 77]]
+      3: [[26, 24], [50, 13], [74, 24]],
+      4: [[20, 36], [37, 14], [63, 14], [80, 36]],
+      5: [[18, 55], [27, 23], [50, 13], [73, 23], [82, 55]],
+      6: [[21, 78], [17, 56], [29, 24], [50, 13], [71, 24], [83, 56]],
+      7: [[22, 80], [17, 58], [27, 26], [42, 14], [58, 14], [73, 26], [83, 58]],
+      8: [[23, 80], [16, 58], [26, 27], [40, 14], [60, 14], [74, 27], [84, 58], [77, 80]]
+    },
+    micro: {
+      1: [[50, 12]],
+      2: [[34, 14], [66, 14]],
+      3: [[24, 26], [50, 12], [76, 26]],
+      4: [[18, 39], [36, 17], [64, 17], [82, 39]],
+      5: [[18, 58], [24, 29], [50, 12], [76, 29], [82, 58]],
+      6: [[20, 80], [16, 60], [28, 30], [42, 17], [58, 17], [72, 30]],
+      7: [[22, 82], [16, 61], [25, 32], [39, 18], [61, 18], [75, 32], [84, 61]],
+      8: [[22, 82], [16, 61], [24, 33], [38, 18], [62, 18], [76, 33], [84, 61], [78, 82]]
     }
   };
 
@@ -63,7 +63,7 @@
       #winner .winner-shell { display:grid!important; grid-template-columns:minmax(0,1.22fr) minmax(300px,.78fr)!important; gap:clamp(1rem,2.5vw,2rem)!important; align-items:start!important; overflow:visible!important; width:min(100%,1380px)!important; max-width:100%!important; min-height:0!important; height:auto!important; margin-top:0!important; opacity:1!important; visibility:visible!important; transform:none!important; translate:none!important; pointer-events:auto!important; }
       #winner .winner-shell.reveal-up, #winner .winner-shell.revealed { opacity:1!important; visibility:visible!important; transform:none!important; translate:none!important; }
 
-      #winner .winner-table { position:relative!important; width:100%!important; max-width:980px!important; height:clamp(540px,48vw,670px)!important; margin:0 auto!important; background:radial-gradient(ellipse at center,rgba(29,143,58,.35) 0%,rgba(13,91,31,.2) 42%,rgba(0,0,0,0) 70%),radial-gradient(ellipse at center,#0d5a1e 0%,#073510 65%,#031405 100%)!important; border:clamp(10px,1.2vw,16px) solid #1c1917!important; border-radius:300px/205px!important; box-shadow:inset 0 0 65px rgba(0,0,0,.82),0 25px 50px rgba(0,0,0,.70)!important; overflow:hidden!important; isolation:isolate!important; --card-w:clamp(25px,3.05vw,44px); --card-h:clamp(36px,4.45vw,64px); --card-font-lg:clamp(8px,.9vw,12px); --card-font-sm:clamp(7px,.75vw,10px); --suit-center:clamp(10px,1.25vw,18px); }
+      #winner .winner-table { position:relative!important; width:100%!important; max-width:980px!important; height:clamp(540px,48vw,670px)!important; margin:0 auto!important; background:radial-gradient(ellipse at center,rgba(29,143,58,.35) 0%,rgba(13,91,31,.2) 42%,rgba(0,0,0,0) 70%),radial-gradient(ellipse at center,#0d5a1e 0%,#073510 65%,#031405 100%)!important; border:clamp(10px,1.2vw,16px) solid #1c1917!important; border-radius:300px/205px!important; box-shadow:inset 0 0 65px rgba(0,0,0,.82),0 25px 50px rgba(0,0,0,.70)!important; overflow:hidden!important; isolation:isolate!important; --card-w:clamp(25px,3.05vw,44px); --card-h:clamp(36px,4.45vw,64px); --card-font-lg:clamp(10px,.98vw,15px); --suit-center:clamp(13px,1.35vw,22px); }
       #winner .winner-table::before, #winner .winner-table::after { content:none!important; display:none!important; }
       #winner .winner-board { position:absolute!important; left:50%!important; top:48%!important; transform:translate(-50%,-50%)!important; display:flex!important; align-items:center!important; justify-content:center!important; gap:clamp(3px,.45vw,8px)!important; padding:clamp(6px,.65vw,10px) clamp(7px,.85vw,14px)!important; background:rgba(2,20,8,.75)!important; border:1px solid rgba(255,255,255,.08)!important; border-radius:10px!important; backdrop-filter:blur(4px)!important; z-index:5!important; width:auto!important; max-width:calc(100% - 24px)!important; }
       #winner .board-slot-empty { width:var(--card-w)!important; height:var(--card-h)!important; border:1px dashed rgba(255,255,255,.2)!important; border-radius:4px!important; background:rgba(255,255,255,.07)!important; flex:0 0 auto!important; }
@@ -79,16 +79,15 @@
 
       #winner .card-pair { display:flex!important; align-items:center!important; justify-content:center!important; gap:clamp(2px,.35vw,6px)!important; width:auto!important; max-width:none!important; }
       #winner .opponent-seat .card-pair .poker-card, #winner .winner-hero-zone .card-pair .poker-card, #winner .winner-board .poker-card, #winner .card-pair .poker-card:nth-child(1), #winner .card-pair .poker-card:nth-child(2) { margin-left:0!important; transform:none!important; }
-      #winner .poker-card { position:relative!important; width:var(--card-w)!important; height:var(--card-h)!important; min-width:var(--card-w)!important; max-width:var(--card-w)!important; background:linear-gradient(135deg,#fff 0%,#f1f5f9 100%)!important; border-radius:4px!important; border:1px solid rgba(0,0,0,.2)!important; box-shadow:0 2px 4px rgba(0,0,0,.35)!important; display:flex!important; flex-direction:column!important; justify-content:space-between!important; align-items:stretch!important; padding:2px!important; font-family:'Inter',system-ui,sans-serif!important; user-select:none!important; color:#0f172a!important; flex:0 0 auto!important; line-height:1!important; text-shadow:none!important; }
+      #winner .poker-card { position:relative!important; width:var(--card-w)!important; height:var(--card-h)!important; min-width:var(--card-w)!important; max-width:var(--card-w)!important; background:linear-gradient(135deg,#fff 0%,#f1f5f9 100%)!important; border-radius:5px!important; border:1px solid rgba(0,0,0,.2)!important; box-shadow:0 2px 4px rgba(0,0,0,.35)!important; display:grid!important; grid-template-rows:auto 1fr auto!important; align-items:center!important; justify-items:center!important; padding:3px 0!important; font-family:'Inter',system-ui,sans-serif!important; user-select:none!important; color:#0f172a!important; flex:0 0 auto!important; line-height:1!important; text-shadow:none!important; overflow:hidden!important; }
       #winner .poker-card:hover { transform:none!important; }
       #winner .poker-card.suit-red { color:#dc2626!important; }
       #winner .poker-card.suit-black { color:#0f172a!important; }
-      #winner .card-index { display:flex!important; flex-direction:column!important; align-items:center!important; line-height:.85!important; }
-      #winner .card-rank { font-weight:900!important; font-size:var(--card-font-lg)!important; letter-spacing:-.5px!important; }
-      #winner .card-suit-sm { font-size:var(--card-font-sm)!important; margin-top:1px!important; }
-      #winner .card-index.bottom-right { transform:rotate(180deg)!important; }
-      #winner .card-center-suit { position:absolute!important; top:50%!important; left:50%!important; transform:translate(-50%,-50%)!important; font-size:var(--suit-center)!important; opacity:.85!important; line-height:1!important; }
-      #winner .poker-card.card-back { background:linear-gradient(135deg,#1e3a8a 0%,#0f172a 100%)!important; border:1px solid rgba(255,255,255,.7)!important; }
+      #winner .card-index, #winner .card-suit-sm { display:none!important; }
+      #winner .card-rank-top, #winner .card-rank-bottom { display:block!important; font-weight:950!important; font-size:var(--card-font-lg)!important; line-height:1!important; letter-spacing:-.04em!important; color:currentColor!important; }
+      #winner .card-rank-bottom { transform:rotate(180deg)!important; }
+      #winner .card-center-suit { position:static!important; transform:none!important; font-size:var(--suit-center)!important; opacity:.92!important; line-height:1!important; color:currentColor!important; }
+      #winner .poker-card.card-back { background:linear-gradient(135deg,#1e3a8a 0%,#0f172a 100%)!important; border:1px solid rgba(255,255,255,.7)!important; display:block!important; }
       #winner .poker-card.card-back::after { content:'DN'!important; position:absolute!important; top:50%!important; left:50%!important; transform:translate(-50%,-50%)!important; color:rgba(255,255,255,.3)!important; font-family:'Cinzel',serif!important; font-weight:800!important; font-size:var(--card-font-lg)!important; }
 
       #winner .winner-controls { margin-top:0!important; display:flex!important; flex-direction:column!important; gap:16px!important; background:rgba(15,23,42,.60)!important; padding:16px!important; border-radius:12px!important; border:1px solid rgba(255,255,255,.10)!important; box-sizing:border-box!important; width:100%!important; opacity:1!important; visibility:visible!important; }
@@ -100,9 +99,10 @@
       #winner .winner-note { font-size:11px!important; color:#94a3b8!important; font-style:italic!important; text-align:center!important; line-height:1.45!important; }
 
       @media (min-width:500px){ #winner .control-row,#winner .card-picker{flex-direction:row!important;align-items:center!important;} #winner .control-row select,#winner .card-picker select{width:auto!important;} #winner .card-picker label{flex:1 1 0!important;} #winner .winner-actions{flex-direction:row!important;flex-wrap:wrap!important;} #winner .winner-actions button{width:auto!important;} }
-      @media (max-width:920px){ #winner .split-heading,#winner .winner-shell{grid-template-columns:1fr!important;} #winner .split-heading{align-items:start!important;} #winner .winner-controls{margin-top:18px!important;} #winner .winner-table{height:clamp(530px,78vw,690px)!important;border-radius:160px!important;--card-w:clamp(28px,4.8vw,40px);--card-h:clamp(40px,6.9vw,58px);} #winner .winner-board{top:47%!important;} }
-      @media (max-width:560px){ #winner.winner-tool{padding-inline:1rem!important;} #winner .split-heading h2{font-size:clamp(3rem,17vw,4.9rem)!important;letter-spacing:-.06em!important;} #winner .winner-table{height:clamp(560px,152vw,680px)!important;border-radius:999px!important;--card-w:clamp(24px,7vw,31px);--card-h:clamp(34px,10.2vw,45px);--card-font-lg:clamp(7px,2.35vw,9px);--card-font-sm:clamp(6px,1.95vw,8px);--suit-center:clamp(9px,3.2vw,12px);} #winner .opponent-seat{width:clamp(58px,18.4vw,74px)!important;max-width:clamp(58px,18.4vw,74px)!important;min-height:clamp(58px,17.5vw,74px)!important;padding:4px!important;gap:2px!important;} #winner .opponent-name{font-size:clamp(6px,2vw,7.5px)!important;} #winner .opponent-odds{font-size:clamp(8px,2.45vw,10px)!important;} #winner .winner-board{top:47%!important;padding:6px 7px!important;} #winner .winner-hero-zone{bottom:10px!important;} #winner .hero-odds-display{font-size:clamp(18px,7vw,24px)!important;} }
-      @media (max-width:340px){ #winner .winner-table{height:560px!important;--card-w:22px;--card-h:32px;} #winner .opponent-seat{width:54px!important;max-width:54px!important;min-height:56px!important;} #winner .opponent-name{font-size:5.75px!important;} }
+      @media (max-width:920px){ #winner .split-heading,#winner .winner-shell{grid-template-columns:1fr!important;} #winner .split-heading{align-items:start!important;} #winner .winner-controls{margin-top:18px!important;} #winner .winner-table{height:clamp(530px,78vw,690px)!important;border-radius:160px!important;--card-w:clamp(27px,4.6vw,38px);--card-h:clamp(39px,6.65vw,55px);--card-font-lg:clamp(9px,1.65vw,13px);--suit-center:clamp(12px,2.2vw,17px);} #winner .winner-board{top:47%!important;} }
+      @media (max-width:700px){ #winner .winner-table{height:clamp(600px,112vw,730px)!important;border-radius:210px!important;--card-w:clamp(25px,4.8vw,34px);--card-h:clamp(36px,6.95vw,49px);--card-font-lg:clamp(9px,1.85vw,12px);--suit-center:clamp(12px,2.55vw,16px);} #winner .opponent-seat{width:clamp(66px,12vw,84px)!important;max-width:clamp(66px,12vw,84px)!important;min-height:clamp(64px,11.5vw,80px)!important;padding:4px 5px!important;} #winner .winner-board{top:45%!important;} #winner .winner-hero-zone{bottom:8px!important;transform:translateX(-50%) scale(.94)!important;} }
+      @media (max-width:560px){ #winner.winner-tool{padding-inline:1rem!important;} #winner .split-heading h2{font-size:clamp(3rem,17vw,4.9rem)!important;letter-spacing:-.06em!important;} #winner .winner-table{height:clamp(600px,160vw,720px)!important;border-radius:999px!important;--card-w:clamp(23px,6.55vw,30px);--card-h:clamp(33px,9.45vw,43px);--card-font-lg:clamp(8px,2.35vw,10px);--suit-center:clamp(10px,3.2vw,13px);} #winner .opponent-seat{width:clamp(56px,17.6vw,70px)!important;max-width:clamp(56px,17.6vw,70px)!important;min-height:clamp(56px,17vw,72px)!important;padding:4px!important;gap:2px!important;} #winner .opponent-name{font-size:clamp(6px,2vw,7.5px)!important;} #winner .opponent-odds{font-size:clamp(8px,2.45vw,10px)!important;} #winner .winner-board{top:43%!important;padding:6px 7px!important;} #winner .winner-hero-zone{bottom:8px!important;transform:translateX(-50%) scale(.86)!important;} #winner .hero-odds-display{font-size:clamp(18px,7vw,24px)!important;} }
+      @media (max-width:340px){ #winner .winner-table{height:570px!important;--card-w:21px;--card-h:31px;--card-font-lg:7.5px;--suit-center:10px;} #winner .opponent-seat{width:52px!important;max-width:52px!important;min-height:54px!important;transform:translate(-50%,-50%) scale(.92)!important;} #winner .opponent-name{font-size:5.65px!important;} #winner .winner-hero-zone{transform:translateX(-50%) scale(.78)!important;} }
     `;
     document.head.appendChild(style);
   }
@@ -161,7 +161,7 @@
     function buildCardHTML(card) {
       if (!card) return '<div class="poker-card card-back"></div>';
       const suitClass = card.suit.isRed ? 'suit-red' : 'suit-black';
-      return `<div class="poker-card ${suitClass}"><div class="card-index top-left"><span class="card-rank">${card.rank}</span><span class="card-suit-sm">${card.suit.symbol}</span></div><div class="card-center-suit">${card.suit.symbol}</div><div class="card-index bottom-right"><span class="card-rank">${card.rank}</span><span class="card-suit-sm">${card.suit.symbol}</span></div></div>`;
+      return `<div class="poker-card ${suitClass}"><span class="card-rank-top">${card.rank}</span><span class="card-center-suit">${card.suit.symbol}</span><span class="card-rank-bottom">${card.rank}</span></div>`;
     }
     function initSelectors() {
       createDeck();
