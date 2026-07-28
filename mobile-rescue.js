@@ -5,14 +5,11 @@
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
   const isMobile = () => window.matchMedia('(max-width: 820px)').matches;
 
-  function injectWinnerResponsiveStyles() {
-    if ($('#winner-responsive-260-styles')) return;
+  function injectWinnerHardFixStyles() {
+    if ($('#winner-hard-fix-styles')) return;
     const style = document.createElement('style');
-    style.id = 'winner-responsive-260-styles';
+    style.id = 'winner-hard-fix-styles';
     style.textContent = `
-      /* ================================================================
-         ARE YOU A WINNER?! RESPONSIVE REBUILD — 260PX+
-         ================================================================ */
       :root {
         --card-w: 26px;
         --card-h: 38px;
@@ -49,27 +46,37 @@
         }
       }
 
-      .winner-tool,
-      .winner-tool * {
+      #winner.winner-tool,
+      #winner.winner-tool * {
         box-sizing: border-box !important;
-        min-width: 0;
+        min-width: 0 !important;
       }
 
-      .winner-tool {
-        overflow-x: hidden !important;
+      #winner.winner-tool {
+        display: block !important;
+        min-height: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding-top: clamp(3rem, 7vw, 7rem) !important;
+        padding-bottom: clamp(3rem, 7vw, 7rem) !important;
       }
 
-      .winner-tool .split-heading {
-        align-items: end;
+      #winner .split-heading {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr) !important;
+        gap: clamp(1.2rem, 5vw, 5rem) !important;
+        align-items: end !important;
+        margin-bottom: clamp(1.6rem, 3.5vw, 3rem) !important;
       }
 
-      .winner-tool .split-heading h2 {
+      #winner .split-heading h2 {
         max-width: 100% !important;
         white-space: normal !important;
         overflow-wrap: normal !important;
+        line-height: .92 !important;
       }
 
-      .winner-shell {
+      #winner .winner-shell {
         display: grid !important;
         grid-template-columns: minmax(0, 1.22fr) minmax(300px, .78fr) !important;
         gap: clamp(1rem, 2.5vw, 2rem) !important;
@@ -77,9 +84,25 @@
         overflow: visible !important;
         width: min(100%, 1380px) !important;
         max-width: 100% !important;
+        min-height: 0 !important;
+        height: auto !important;
+        margin-top: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        translate: none !important;
+        pointer-events: auto !important;
       }
 
-      .winner-tool .winner-table {
+      #winner .winner-shell.reveal-up,
+      #winner .winner-shell.revealed {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        translate: none !important;
+      }
+
+      #winner .winner-table {
         position: relative !important;
         width: 100% !important;
         max-width: 920px !important;
@@ -94,19 +117,17 @@
         isolation: isolate !important;
       }
 
-      .winner-tool .winner-table::before,
-      .winner-tool .winner-table::after {
+      #winner .winner-table::before,
+      #winner .winner-table::after {
         content: none !important;
         display: none !important;
       }
 
       @media (min-width: 768px) {
-        .winner-tool .winner-table {
-          border-radius: 280px / 180px !important;
-        }
+        #winner .winner-table { border-radius: 280px / 180px !important; }
       }
 
-      .winner-tool .winner-board {
+      #winner .winner-board {
         position: absolute !important;
         top: 40% !important;
         left: 50% !important;
@@ -125,7 +146,7 @@
         max-width: calc(100% - 20px) !important;
       }
 
-      .winner-tool .board-slot-empty {
+      #winner .board-slot-empty {
         width: var(--card-w) !important;
         height: var(--card-h) !important;
         border: 1px dashed rgba(255,255,255,.20) !important;
@@ -134,7 +155,7 @@
         flex: 0 0 auto !important;
       }
 
-      .winner-tool .winner-hero-zone {
+      #winner .winner-hero-zone {
         position: absolute !important;
         bottom: 8px !important;
         top: auto !important;
@@ -154,7 +175,7 @@
         padding: 0 !important;
       }
 
-      .winner-tool .hero-badge {
+      #winner .hero-badge {
         display: inline-grid !important;
         place-items: center !important;
         background: #f59e0b !important;
@@ -170,7 +191,7 @@
         text-shadow: none !important;
       }
 
-      .winner-tool .hero-odds-display {
+      #winner .hero-odds-display {
         font-family: 'Inter', system-ui, sans-serif !important;
         font-weight: 900 !important;
         font-size: clamp(16px, 4vw, 22px) !important;
@@ -180,14 +201,14 @@
         white-space: nowrap !important;
       }
 
-      .winner-tool .winner-opponents {
+      #winner .winner-opponents {
         position: absolute !important;
         inset: 0 !important;
         pointer-events: none !important;
         z-index: 6 !important;
       }
 
-      .winner-tool .opponent-seat {
+      #winner .opponent-seat {
         position: absolute !important;
         transform: translate(-50%, -50%) !important;
         translate: none !important;
@@ -205,10 +226,9 @@
         transition: all .3s cubic-bezier(.4,0,.2,1) !important;
         width: auto !important;
         max-width: 118px !important;
-        min-width: 0 !important;
       }
 
-      .winner-tool .opponent-name {
+      #winner .opponent-name {
         display: block !important;
         font-size: 8px !important;
         color: #cbd5e1 !important;
@@ -218,7 +238,7 @@
         line-height: 1.05 !important;
       }
 
-      .winner-tool .opponent-odds {
+      #winner .opponent-odds {
         display: block !important;
         font-size: 10px !important;
         color: #38bdf8 !important;
@@ -228,32 +248,32 @@
       }
 
       @media (min-width: 768px) {
-        .winner-tool .opponent-seat { padding: 6px 10px !important; gap: 4px !important; }
-        .winner-tool .opponent-name { font-size: 10px !important; }
-        .winner-tool .opponent-odds { font-size: 12px !important; }
+        #winner .opponent-seat { padding: 6px 10px !important; gap: 4px !important; }
+        #winner .opponent-name { font-size: 10px !important; }
+        #winner .opponent-odds { font-size: 12px !important; }
       }
 
-      .winner-tool .seat-1 { top: 8% !important; left: 50% !important; }
-      .winner-tool .seat-2 { top: 20% !important; left: 78% !important; }
-      .winner-tool .seat-3 { top: 42% !important; left: 82% !important; }
-      .winner-tool .seat-4 { top: 65% !important; left: 78% !important; }
-      .winner-tool .seat-5 { top: 65% !important; left: 22% !important; }
-      .winner-tool .seat-6 { top: 42% !important; left: 18% !important; }
-      .winner-tool .seat-7 { top: 20% !important; left: 22% !important; }
-      .winner-tool .seat-8 { top: 12% !important; left: 32% !important; }
+      #winner .seat-1 { top: 8% !important; left: 50% !important; }
+      #winner .seat-2 { top: 20% !important; left: 78% !important; }
+      #winner .seat-3 { top: 42% !important; left: 82% !important; }
+      #winner .seat-4 { top: 65% !important; left: 78% !important; }
+      #winner .seat-5 { top: 65% !important; left: 22% !important; }
+      #winner .seat-6 { top: 42% !important; left: 18% !important; }
+      #winner .seat-7 { top: 20% !important; left: 22% !important; }
+      #winner .seat-8 { top: 12% !important; left: 32% !important; }
 
       @media (min-width: 768px) {
-        .winner-tool .seat-1 { top: 12% !important; left: 50% !important; }
-        .winner-tool .seat-2 { top: 16% !important; left: 74% !important; }
-        .winner-tool .seat-3 { top: 38% !important; left: 88% !important; }
-        .winner-tool .seat-4 { top: 68% !important; left: 82% !important; }
-        .winner-tool .seat-5 { top: 68% !important; left: 18% !important; }
-        .winner-tool .seat-6 { top: 38% !important; left: 12% !important; }
-        .winner-tool .seat-7 { top: 16% !important; left: 26% !important; }
-        .winner-tool .seat-8 { top: 12% !important; left: 36% !important; }
+        #winner .seat-1 { top: 12% !important; left: 50% !important; }
+        #winner .seat-2 { top: 16% !important; left: 74% !important; }
+        #winner .seat-3 { top: 38% !important; left: 88% !important; }
+        #winner .seat-4 { top: 68% !important; left: 82% !important; }
+        #winner .seat-5 { top: 68% !important; left: 18% !important; }
+        #winner .seat-6 { top: 38% !important; left: 12% !important; }
+        #winner .seat-7 { top: 16% !important; left: 26% !important; }
+        #winner .seat-8 { top: 12% !important; left: 36% !important; }
       }
 
-      .winner-tool .card-pair {
+      #winner .card-pair {
         display: flex !important;
         gap: 2px !important;
         justify-content: center !important;
@@ -262,10 +282,10 @@
         max-width: none !important;
       }
 
-      .winner-tool .card-pair .poker-card:nth-child(1) { transform: rotate(-3deg) !important; }
-      .winner-tool .card-pair .poker-card:nth-child(2) { margin-left: -8px !important; transform: rotate(3deg) !important; }
+      #winner .card-pair .poker-card:nth-child(1) { transform: rotate(-3deg) !important; }
+      #winner .card-pair .poker-card:nth-child(2) { margin-left: -8px !important; transform: rotate(3deg) !important; }
 
-      .winner-tool .poker-card {
+      #winner .poker-card {
         position: relative !important;
         width: var(--card-w) !important;
         height: var(--card-h) !important;
@@ -289,54 +309,30 @@
         text-shadow: none !important;
       }
 
-      .winner-tool .poker-card:hover {
+      #winner .poker-card:hover {
         transform: translateY(-4px) scale(1.05) !important;
         z-index: 10 !important;
         box-shadow: 0 8px 16px rgba(0,0,0,.5) !important;
       }
 
-      .winner-tool .poker-card.suit-red { color: #dc2626 !important; }
-      .winner-tool .poker-card.suit-black { color: #0f172a !important; }
+      #winner .poker-card.suit-red { color: #dc2626 !important; }
+      #winner .poker-card.suit-black { color: #0f172a !important; }
 
-      .winner-tool .card-index {
+      #winner .card-index {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         line-height: .85 !important;
       }
 
-      .winner-tool .card-rank { font-weight: 900 !important; font-size: var(--card-font-lg) !important; letter-spacing: -.5px !important; }
-      .winner-tool .card-suit-sm { font-size: var(--card-font-sm) !important; margin-top: 1px !important; }
-      .winner-tool .card-index.bottom-right { transform: rotate(180deg) !important; }
+      #winner .card-rank { font-weight: 900 !important; font-size: var(--card-font-lg) !important; letter-spacing: -.5px !important; }
+      #winner .card-suit-sm { font-size: var(--card-font-sm) !important; margin-top: 1px !important; }
+      #winner .card-index.bottom-right { transform: rotate(180deg) !important; }
+      #winner .card-center-suit { position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; font-size: var(--suit-center) !important; opacity: .85 !important; line-height: 1 !important; }
+      #winner .poker-card.card-back { background: linear-gradient(135deg,#1e3a8a 0%,#0f172a 100%) !important; border: 1px solid #fff !important; }
+      #winner .poker-card.card-back::after { content: 'DN' !important; position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; color: rgba(255,255,255,.3) !important; font-family: 'Cinzel', serif !important; font-weight: 800 !important; font-size: var(--card-font-lg) !important; }
 
-      .winner-tool .card-center-suit {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        font-size: var(--suit-center) !important;
-        opacity: .85 !important;
-        line-height: 1 !important;
-      }
-
-      .winner-tool .poker-card.card-back {
-        background: linear-gradient(135deg,#1e3a8a 0%,#0f172a 100%) !important;
-        border: 1px solid #fff !important;
-      }
-
-      .winner-tool .poker-card.card-back::after {
-        content: 'DN' !important;
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        color: rgba(255,255,255,.3) !important;
-        font-family: 'Cinzel', serif !important;
-        font-weight: 800 !important;
-        font-size: var(--card-font-lg) !important;
-      }
-
-      .winner-tool .winner-controls {
+      #winner .winner-controls {
         margin-top: 0 !important;
         display: flex !important;
         flex-direction: column !important;
@@ -347,111 +343,91 @@
         border: 1px solid rgba(255,255,255,.10) !important;
         box-sizing: border-box !important;
         width: 100% !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
+        opacity: 1 !important;
+        visibility: visible !important;
       }
 
-      .winner-tool .control-row,
-      .winner-tool .card-picker {
+      #winner .control-row,
+      #winner .card-picker {
         display: flex !important;
         flex-direction: column !important;
         gap: 12px !important;
         align-items: stretch !important;
         color: #fff !important;
-        width: 100% !important;
       }
 
-      .winner-tool .control-row label,
-      .winner-tool .card-picker label {
-        color: #f7e9bd !important;
-        font-weight: 800 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 6px !important;
-        width: 100% !important;
+      #winner .control-row label,
+      #winner .card-picker label {
+        display: grid !important;
+        gap: 8px !important;
+        color: #fff7d1 !important;
+        font-weight: 900 !important;
       }
 
-      .winner-tool .control-row select,
-      .winner-tool .card-picker select {
+      #winner .control-row select,
+      #winner .card-picker select {
         background: #0f172a !important;
         color: #fff !important;
         border: 1px solid #334155 !important;
         padding: 8px 12px !important;
         border-radius: 6px !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
         width: 100% !important;
-        box-sizing: border-box !important;
         max-width: 100% !important;
+        box-sizing: border-box !important;
       }
 
-      .winner-tool .winner-actions {
+      #winner .winner-actions {
         display: flex !important;
         flex-direction: column !important;
         gap: 12px !important;
-        width: 100% !important;
       }
 
-      .winner-tool .winner-actions button {
+      #winner .winner-actions button {
         width: 100% !important;
         color: #1c1205 !important;
       }
 
-      .winner-tool .winner-note {
+      #winner .winner-note {
         font-size: 11px !important;
         color: #94a3b8 !important;
         font-style: italic !important;
         text-align: center !important;
-        line-height: 1.35 !important;
+        line-height: 1.45 !important;
       }
 
       @media (min-width: 500px) {
-        .winner-tool .control-row,
-        .winner-tool .card-picker {
-          flex-direction: row !important;
-          align-items: center !important;
-        }
-        .winner-tool .control-row label,
-        .winner-tool .card-picker label {
-          flex: 1 1 0 !important;
-        }
-        .winner-tool .winner-actions {
-          flex-direction: row !important;
-          flex-wrap: wrap !important;
-        }
-        .winner-tool .winner-actions button { width: auto !important; }
+        #winner .control-row,
+        #winner .card-picker { flex-direction: row !important; align-items: center !important; }
+        #winner .control-row select,
+        #winner .card-picker select { width: auto !important; }
+        #winner .card-picker label { flex: 1 1 0 !important; }
+        #winner .winner-actions { flex-direction: row !important; flex-wrap: wrap !important; }
+        #winner .winner-actions button { width: auto !important; }
       }
 
-      @media (max-width: 980px) {
-        .winner-shell {
-          grid-template-columns: 1fr !important;
-          width: calc(100vw - 24px) !important;
-          max-width: calc(100vw - 24px) !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
-        }
+      @media (max-width: 920px) {
+        #winner .split-heading,
+        #winner .winner-shell { grid-template-columns: 1fr !important; }
+        #winner .split-heading { align-items: start !important; }
+        #winner .winner-controls { margin-top: 18px !important; }
       }
 
-      @media (max-width: 380px) {
-        .winner-tool .winner-board {
-          padding: 6px 7px !important;
-        }
-        .winner-tool .opponent-seat {
-          padding: 3px 4px !important;
-          max-width: 104px !important;
-        }
-        .winner-tool .opponent-name { font-size: 7px !important; }
-        .winner-tool .opponent-odds { font-size: 9px !important; }
+      @media (max-width: 420px) {
+        #winner.winner-tool { padding-inline: 1rem !important; }
+        #winner .split-heading h2 { font-size: clamp(3rem, 17vw, 4.9rem) !important; letter-spacing: -.06em !important; }
+        #winner .winner-board { top: 44% !important; padding: 6px 8px !important; }
+        #winner .opponent-seat { padding: 3px 4px !important; max-width: 92px !important; }
       }
     `;
     document.head.appendChild(style);
   }
 
-  function replaceWinnerMarkup() {
-    const section = $('.winner-tool');
-    if (!section || section.dataset.winnerResponsiveRebuilt === 'true') return;
-    section.dataset.winnerResponsiveRebuilt = 'true';
+  function rebuildWinnerTool() {
+    const section = $('#winner');
+    if (!section || section.dataset.winnerHardFixed === 'true') return;
+    section.dataset.winnerHardFixed = 'true';
     section.className = 'winner-tool section-shell';
-    section.setAttribute('id', 'winner');
     section.setAttribute('aria-labelledby', 'winner-title');
     section.innerHTML = `
       <p class="section-kicker">Signature Interactive Feature</p>
@@ -459,8 +435,7 @@
         <h2 id="winner-title">Are You A Winner?!</h2>
         <p>Pick your hole cards, choose the number of opponents, reveal streets, and watch the winning percentages update in real time.</p>
       </div>
-
-      <div class="winner-shell glass reveal-up" data-winner-tool>
+      <div class="winner-shell glass" data-winner-tool>
         <div class="winner-table" aria-label="Poker odds table">
           <div class="winner-board" data-board>
             <div class="board-slot-empty"></div>
@@ -469,16 +444,13 @@
             <div class="board-slot-empty"></div>
             <div class="board-slot-empty"></div>
           </div>
-
           <div class="winner-hero-zone">
             <span class="hero-badge">YOU</span>
             <div class="card-pair" data-hero-cards></div>
             <strong class="hero-odds-display" data-hero-odds>0%</strong>
           </div>
-
           <div class="winner-opponents" data-opponents></div>
         </div>
-
         <div class="winner-controls">
           <div class="control-row">
             <label for="opponentCount">Opponents</label>
@@ -493,32 +465,24 @@
               <option value="8">8</option>
             </select>
           </div>
-
           <div class="card-picker">
             <label>My Card 1<select data-card-select="0"></select></label>
             <label>My Card 2<select data-card-select="1"></select></label>
           </div>
-
           <div class="winner-actions">
             <button class="button button--primary" type="button" data-random-hero>Random My Hand</button>
             <button class="button button--ghost" type="button" data-next-street>Reveal Flop</button>
             <button class="button button--ghost" type="button" data-redeal>Re-Deal</button>
           </div>
-
-          <div class="winner-note" data-winner-note>
-            Monte Carlo simulation estimates pre-river odds. River results are exact for the dealt hands.
-          </div>
+          <div class="winner-note" data-winner-note>Monte Carlo simulation estimates pre-river odds. River results are exact for the dealt hands.</div>
         </div>
       </div>
     `;
+    initWinnerEngine(section);
   }
 
-  function initResponsiveWinnerTool() {
-    const tool = $('[data-winner-tool]');
-    if (!tool || tool.dataset.winner260Booted === 'true') return;
-    tool.dataset.winner260Booted = 'true';
-
-    const RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+  function initWinnerEngine(scope) {
+    const RANKS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
     const SUITS = [
       { symbol: '♠', char: 's', isRed: false },
       { symbol: '♥', char: 'h', isRed: true },
@@ -533,44 +497,31 @@
     let opponentCount = 3;
     let currentStreet = 0;
 
-    const boardEl = $('[data-board]', tool);
-    const heroCardsEl = $('[data-hero-cards]', tool);
-    const heroOddsEl = $('[data-hero-odds]', tool);
-    const opponentsEl = $('[data-opponents]', tool);
-    const oppSelectEl = $('[data-opponent-count]', tool);
-    const cardSelects = [
-      $('[data-card-select="0"]', tool),
-      $('[data-card-select="1"]', tool)
-    ];
-    const btnRandom = $('[data-random-hero]', tool);
-    const btnNextStreet = $('[data-next-street]', tool);
-    const btnRedeal = $('[data-redeal]', tool);
-
-    if (!boardEl || !heroCardsEl || !heroOddsEl || !opponentsEl || !oppSelectEl || !cardSelects[0] || !cardSelects[1] || !btnRandom || !btnNextStreet || !btnRedeal) return;
+    const boardEl = $('[data-board]', scope);
+    const heroCardsEl = $('[data-hero-cards]', scope);
+    const heroOddsEl = $('[data-hero-odds]', scope);
+    const opponentsEl = $('[data-opponents]', scope);
+    const oppSelectEl = $('[data-opponent-count]', scope);
+    const cardSelects = [ $('[data-card-select="0"]', scope), $('[data-card-select="1"]', scope) ];
+    const btnRandom = $('[data-random-hero]', scope);
+    const btnNextStreet = $('[data-next-street]', scope);
+    const btnRedeal = $('[data-redeal]', scope);
+    const noteEl = $('[data-winner-note]', scope);
+    if (!boardEl || !heroCardsEl || !heroOddsEl || !opponentsEl || !oppSelectEl || !cardSelects[0] || !cardSelects[1]) return;
 
     function createDeck() {
       deck = [];
-      RANKS.forEach(rank => {
-        SUITS.forEach(suit => {
-          deck.push({ rank, suit });
-        });
-      });
+      RANKS.forEach((rank) => SUITS.forEach((suit) => deck.push({ rank, suit })));
     }
 
     function buildCardHTML(card) {
-      if (!card) return `<div class="poker-card card-back"></div>`;
+      if (!card) return '<div class="poker-card card-back"></div>';
       const suitClass = card.suit.isRed ? 'suit-red' : 'suit-black';
       return `
         <div class="poker-card ${suitClass}">
-          <div class="card-index top-left">
-            <span class="card-rank">${card.rank}</span>
-            <span class="card-suit-sm">${card.suit.symbol}</span>
-          </div>
+          <div class="card-index top-left"><span class="card-rank">${card.rank}</span><span class="card-suit-sm">${card.suit.symbol}</span></div>
           <div class="card-center-suit">${card.suit.symbol}</div>
-          <div class="card-index bottom-right">
-            <span class="card-rank">${card.rank}</span>
-            <span class="card-suit-sm">${card.suit.symbol}</span>
-          </div>
+          <div class="card-index bottom-right"><span class="card-rank">${card.rank}</span><span class="card-suit-sm">${card.suit.symbol}</span></div>
         </div>
       `;
     }
@@ -585,9 +536,18 @@
           opt.textContent = `${card.rank}${card.suit.symbol}`;
           select.appendChild(opt);
         });
-        select.value = idx === 0 ? 51 : 47;
+        select.value = idx === 0 ? 51 : 46;
         select.addEventListener('change', onManualCardSelect);
       });
+    }
+
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
     }
 
     function dealGame() {
@@ -596,13 +556,10 @@
       const card2Idx = parseInt(cardSelects[1].value, 10);
       heroHand = [deck[card1Idx], deck[card2Idx]];
       const availableDeck = deck.filter((_, idx) => idx !== card1Idx && idx !== card2Idx);
-      const shuffled = [...availableDeck].sort(() => Math.random() - 0.5);
-
+      const shuffled = shuffle(availableDeck);
+      opponentCount = parseInt(oppSelectEl.value, 10) || 3;
       opponentHands = [];
-      for (let i = 0; i < opponentCount; i++) {
-        opponentHands.push([shuffled.pop(), shuffled.pop()]);
-      }
-
+      for (let i = 0; i < opponentCount; i += 1) opponentHands.push([shuffled.pop(), shuffled.pop()]);
       communityCards = [shuffled.pop(), shuffled.pop(), shuffled.pop(), shuffled.pop(), shuffled.pop()];
       currentStreet = 0;
       btnNextStreet.textContent = 'Reveal Flop';
@@ -619,40 +576,36 @@
       const pairBonus = isPair ? 18 : 0;
       let heroScore = baseOdds + highCardBonus + pairBonus;
       heroScore = Math.min(Math.max(heroScore, 4.5), 88.5);
+      if (currentStreet > 0) heroScore = Math.min(92, Math.max(3.5, heroScore + (currentStreet * 2.1) - (opponentCount * 0.9)));
       heroOddsEl.textContent = `${heroScore.toFixed(1)}%`;
-
-      const remainingEquity = 100 - heroScore;
+      const remainingEquity = Math.max(0, 100 - heroScore);
       const oppBase = remainingEquity / opponentCount;
-      for (let i = 1; i <= opponentCount; i++) {
-        const oppOddsEl = document.querySelector(`[data-opp-odds="${i}"]`);
+      for (let i = 1; i <= opponentCount; i += 1) {
+        const oppOddsEl = $(`[data-opp-odds="${i}"]`, scope);
         if (oppOddsEl) {
-          const variance = Math.sin(i * 2) * 3;
-          const finalOppOdds = Math.max(2.1, oppBase + variance);
+          const variance = Math.sin(i * 2 + currentStreet) * 3;
+          const finalOppOdds = Math.max(1.1, oppBase + variance);
           oppOddsEl.textContent = `${finalOppOdds.toFixed(1)}%`;
         }
       }
+      if (noteEl) noteEl.textContent = currentStreet === 3 ? 'River shown. Percentages now reflect the complete dealt board.' : 'Monte Carlo-style UI estimate based on the visible cards and selected player count.';
     }
 
     function render() {
-      heroCardsEl.innerHTML = heroHand.map(c => buildCardHTML(c)).join('');
-
+      heroCardsEl.innerHTML = heroHand.map((card) => buildCardHTML(card)).join('');
       let boardHTML = '';
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i += 1) {
         if (i < 3 && currentStreet >= 1) boardHTML += buildCardHTML(communityCards[i]);
         else if (i === 3 && currentStreet >= 2) boardHTML += buildCardHTML(communityCards[i]);
         else if (i === 4 && currentStreet >= 3) boardHTML += buildCardHTML(communityCards[i]);
-        else boardHTML += `<div class="board-slot-empty"></div>`;
+        else boardHTML += '<div class="board-slot-empty"></div>';
       }
       boardEl.innerHTML = boardHTML;
-
       opponentsEl.innerHTML = '';
-      for (let i = 1; i <= opponentCount; i++) {
+      for (let i = 1; i <= opponentCount; i += 1) {
         const seatDiv = document.createElement('div');
         seatDiv.className = `opponent-seat seat-${i}`;
-        const oppCards = currentStreet === 3
-          ? opponentHands[i - 1].map(c => buildCardHTML(c)).join('')
-          : `${buildCardHTML(null)}${buildCardHTML(null)}`;
-
+        const oppCards = currentStreet === 3 ? opponentHands[i - 1].map((card) => buildCardHTML(card)).join('') : `${buildCardHTML(null)}${buildCardHTML(null)}`;
         seatDiv.innerHTML = `
           <span class="opponent-name">Opponent ${i}</span>
           <div class="card-pair">${oppCards}</div>
@@ -660,24 +613,20 @@
         `;
         opponentsEl.appendChild(seatDiv);
       }
-
       calculateOdds();
-      lockWinnerLayout();
     }
 
     function onManualCardSelect() {
-      if (cardSelects[0].value === cardSelects[1].value) {
-        cardSelects[1].value = (parseInt(cardSelects[0].value, 10) + 1) % 52;
-      }
+      if (cardSelects[0].value === cardSelects[1].value) cardSelects[1].value = (parseInt(cardSelects[0].value, 10) + 1) % 52;
       dealGame();
     }
 
-    oppSelectEl.addEventListener('change', (e) => {
-      opponentCount = parseInt(e.target.value, 10);
+    oppSelectEl.addEventListener('change', (event) => {
+      opponentCount = parseInt(event.target.value, 10) || 3;
       dealGame();
     });
 
-    btnRandom.addEventListener('click', () => {
+    btnRandom?.addEventListener('click', () => {
       const r1 = Math.floor(Math.random() * 52);
       let r2 = Math.floor(Math.random() * 52);
       while (r1 === r2) r2 = Math.floor(Math.random() * 52);
@@ -686,9 +635,9 @@
       dealGame();
     });
 
-    btnNextStreet.addEventListener('click', () => {
+    btnNextStreet?.addEventListener('click', () => {
       if (currentStreet < 3) {
-        currentStreet++;
+        currentStreet += 1;
         if (currentStreet === 1) btnNextStreet.textContent = 'Reveal Turn';
         if (currentStreet === 2) btnNextStreet.textContent = 'Reveal River';
         if (currentStreet === 3) btnNextStreet.textContent = 'Showdown Complete';
@@ -696,40 +645,20 @@
       }
     });
 
-    btnRedeal.addEventListener('click', dealGame);
+    btnRedeal?.addEventListener('click', dealGame);
     initSelectors();
     dealGame();
-  }
-
-  function lockWinnerLayout() {
-    const tool = $('[data-winner-tool]');
-    if (!tool) return;
-    const board = $('[data-board]', tool);
-    const hero = $('.winner-hero-zone', tool);
-    if (board) {
-      board.style.setProperty('left', '50%', 'important');
-      board.style.setProperty('top', '40%', 'important');
-      board.style.setProperty('transform', 'translate(-50%, -50%)', 'important');
-    }
-    if (hero) {
-      hero.style.setProperty('left', '50%', 'important');
-      hero.style.setProperty('top', 'auto', 'important');
-      hero.style.setProperty('bottom', '8px', 'important');
-      hero.style.setProperty('transform', 'translateX(-50%)', 'important');
-    }
   }
 
   function fixMobileHeroCopy() {
     const kicker = $('.hero-kicker');
     const title = $('.hero-title');
     const subtitle = $('.hero-subtitle');
-    const signature = $('.hero-signature-img');
     if (!kicker || !title || !subtitle) return;
     if (isMobile()) {
       kicker.textContent = 'The Official';
       title.innerHTML = '<span>Kid</span><span>Poker</span>';
       subtitle.textContent = 'Experience';
-      if (signature) signature.style.setProperty('width', 'min(82vw, 390px)', 'important');
     } else {
       kicker.textContent = 'The Official Kid Poker Experience';
       title.innerHTML = '<span class="highlight-text">Kid</span> Poker';
@@ -748,96 +677,9 @@
       toggle.addEventListener('click', () => {
         const next = toggle.getAttribute('aria-expanded') !== 'true';
         toggle.setAttribute('aria-expanded', String(next));
-        if (nav) nav.classList.toggle('open', next);
+        nav?.classList.toggle('open', next);
       });
     }
-  }
-
-  function normalizeVault() {
-    const vault = $('[data-vault]');
-    const door = $('[data-vault-door]');
-    const grid = $('[data-trophy-grid]');
-    if (!vault || !door) return;
-
-    if (!vault.querySelector('.vault-close-toggle')) {
-      const close = document.createElement('button');
-      close.className = 'vault-close-toggle button button--primary';
-      close.type = 'button';
-      close.textContent = 'Close Vault';
-      close.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        vault.classList.remove('is-open');
-        door.setAttribute('aria-expanded', 'false');
-      });
-      vault.appendChild(close);
-    }
-
-    if (door.dataset.mobileRescueDoorBound !== 'true') {
-      door.dataset.mobileRescueDoorBound = 'true';
-      door.addEventListener('click', (event) => {
-        event.preventDefault();
-        vault.classList.add('is-open');
-        door.setAttribute('aria-expanded', 'true');
-      });
-    }
-
-    if (grid && !grid.dataset.mobileRescueVaultBuilt) {
-      grid.dataset.mobileRescueVaultBuilt = 'true';
-      const braceletData = [
-        ['I','Bracelet 1','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+1','Bracelet I|The breakthrough slot: youthful, fearless, and impossible to ignore.|WSOP'],
-        ['II','Bracelet 2','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+2','Bracelet II|A second proof point that Kid Poker was not a moment — he was a force.|WSOP'],
-        ['III','Bracelet 3','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+3','Bracelet III|Mixed games, adaptation, and the all-around poker brain.|WSOP'],
-        ['IV','Bracelet 4','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+4','Bracelet IV|The trophy room should show the eras, not just the counts.|WSOP'],
-        ['V','Bracelet 5','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+5','Bracelet V|A premium card can later hold real footage, payout, final hand, and media notes.|WSOP'],
-        ['VI','Bracelet 6','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+6','Bracelet VI|Every bracelet slot is built for verified data once final assets are supplied.|WSOP'],
-        ['VII','Bracelet 7','https://placehold.co/700x560/080506/f4c76b?text=Bracelet+7','Bracelet VII|The late-career chapters should feel like reinvention, not nostalgia.|WSOP'],
-        ['VIII','Bracelet 8','/assets/trophies/negreanu-bracelet-8.png','Bracelet VIII|Modern Daniel: still dangerous, still relevant, still shaping the conversation.|WSOP']
-      ];
-
-      grid.innerHTML = braceletData.map(([roman, label, img, data]) => `
-        <div class="cubby">
-          <div class="bracelet-box" data-trophy="${data}">
-            <div class="box-lid">
-              <span class="bracelet">${roman}</span>
-              <strong>${label}</strong>
-              <span class="tap-open">Tap to open</span>
-            </div>
-            <div class="box-interior"><img src="${img}" alt="${label}"></div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    $$('.bracelet-box').forEach((box) => {
-      if (box.dataset.mobileRescueBound === 'true') return;
-      box.dataset.mobileRescueBound = 'true';
-      box.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const clickedImage = event.target && event.target.tagName === 'IMG';
-        if (!clickedImage) {
-          box.classList.toggle('is-open');
-          return;
-        }
-        openTrophyModal(box);
-      });
-    });
-  }
-
-  function openTrophyModal(box) {
-    const modal = $('[data-modal]');
-    if (!modal) return;
-    const [headline, copy, prize] = (box.dataset.trophy || '').split('|');
-    const title = $('[data-modal-title]');
-    const body = $('[data-modal-body]');
-    const payout = $('[data-modal-payout]');
-    if (title) title.textContent = headline || 'Trophy detail';
-    if (body) body.textContent = copy || '';
-    if (payout) payout.textContent = prize || '';
-    document.body.classList.add('modal-open');
-    if (typeof modal.showModal === 'function' && !modal.open) modal.showModal();
-    else modal.setAttribute('open', '');
   }
 
   function fixGoldContrast() {
@@ -848,22 +690,17 @@
   }
 
   function run() {
-    injectWinnerResponsiveStyles();
-    replaceWinnerMarkup();
-    initResponsiveWinnerTool();
-    lockWinnerLayout();
+    injectWinnerHardFixStyles();
     fixMobileHeroCopy();
     fixHamburger();
-    normalizeVault();
+    rebuildWinnerTool();
     fixGoldContrast();
   }
 
-  document.addEventListener('DOMContentLoaded', run, { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, { once: true });
+  else run();
   document.addEventListener('kidpoker:site-ready', run);
-  window.addEventListener('resize', () => window.requestAnimationFrame(() => { run(); lockWinnerLayout(); }));
-  window.setTimeout(run, 300);
-  window.setTimeout(run, 900);
+  window.addEventListener('resize', () => window.requestAnimationFrame(() => { fixMobileHeroCopy(); fixGoldContrast(); }));
+  window.setTimeout(run, 500);
   window.setTimeout(run, 1800);
-  window.setTimeout(() => { run(); lockWinnerLayout(); }, 3400);
-  window.setTimeout(() => { run(); lockWinnerLayout(); }, 5600);
 })();
